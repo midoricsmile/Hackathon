@@ -1,0 +1,32 @@
+
+
+jQuery(document).ready(function(){
+
+			var array_ad=["vay-nhanh-sieu-toc","vay-nhanh-oto","vay-nhanh-dong-ho"];
+			var ad_content	=	getParameterByName("utm_content");
+			
+				if(array_ad.indexOf(ad_content)>-1){
+						
+
+
+					if(ad_content != "vay-nhanh-dong-ho"){
+						jQuery(".vay-kinh-doanh div").first().removeClass("vay-nhanh-dong-ho");
+						jQuery(".vay-kinh-doanh div").first().addClass(ad_content);
+						jQuery(".home-banner").css("background","url(langding/img/"+ad_content+".jpg)");
+						jQuery(".home-banner").css("background-position","center")	;
+						jQuery(".home-banner").css("background-size","cover");
+					}
+
+					if(ad_content == "vay-nhanh-sieu-toc"){
+						jQuery(".vay-nhanh img").attr("src","langding/img/vay-nhanh.png");
+						}
+			
+			else{
+
+				jQuery(".vay-nhanh img").attr("src","langding/img/vay-nhanh-hobbies.png");
+			}
+				
+			}
+			});
+
+

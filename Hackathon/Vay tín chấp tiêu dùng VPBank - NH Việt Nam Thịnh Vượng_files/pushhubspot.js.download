@@ -1,0 +1,13 @@
+
+function submithub(name, phone, identify, place) {
+    $('input[name="firstname"]').val(name).change();
+    $('.hs-input[name="phone"]').val(phone).change();
+    $('.hs-input[name="utm_content"]').val($('#utm_content').val()).change();
+    $('.hs-input[name="utm_source"]').val($('#utm_source').val()).change();
+    $('.hs-input[name="utm_campaign"]').val($('#utm_campaign').val()).change();
+    $('.hs-input[name="website"]').val(document.location.pathname).change();
+    $('.hs-input[name="utm_medium"]').val($('#utm_medium').val()).change();
+    $('.hs-input[name="state"]').val(place).change();
+    $('.hs-input[name="cmnd"]').val(identify).change();
+    $('.hs_submit input[type="submit"]').click();
+}

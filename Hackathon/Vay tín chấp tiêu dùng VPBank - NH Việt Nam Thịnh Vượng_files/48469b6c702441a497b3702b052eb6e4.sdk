@@ -1,0 +1,198 @@
+(function () {
+  "use strict";
+  
+  
+var resJS = document.createElement('SCRIPT');
+var resJS1 = document.createElement('SCRIPT');
+var resJS2 = document.createElement('SCRIPT');
+var resJS3 = document.createElement('SCRIPT');
+var resIMG = document.createElement('img');
+var resIMG1 = document.createElement('img');
+//
+var done = false;
+
+resJS.setAttribute('src', 'https://static.getclicky.com/js');
+resJS.setAttribute('type', 'text/javascript');
+resJS.setAttribute('async', 'true');
+
+resJS1.setAttribute('src', 'https://sdk.resu.io/scripts/pathanalyzer.js');
+resJS1.setAttribute('type', 'text/javascript');
+
+//resJS2.setAttribute('src', 'https://js.resulticks.com/scripts/reswebnotify.js');
+//resJS2.setAttribute('type', 'text/javascript');
+
+resJS3.setAttribute('src', 'https://sdk.resu.io/scripts/resclient.min.js');
+resJS3.setAttribute('type', 'text/javascript');
+
+
+
+
+document.body.appendChild(resJS);
+
+
+resIMG.setAttribute('src', 'https://static.getclicky.com/101117705ns.gif');
+resIMG.setAttribute('height', '1');
+resIMG.setAttribute('width', '1');
+resIMG.setAttribute('border', '0');
+resIMG.setAttribute('style', 'display:none');
+document.body.appendChild(resIMG);
+
+resIMG1.setAttribute('src', 'https://in.getclicky.com/101117707ns.gif');
+resIMG1.setAttribute('height', '1');
+resIMG1.setAttribute('width', '1');
+resIMG1.setAttribute('border', '0');
+resIMG1.setAttribute('style', 'display:none');
+document.body.appendChild(resIMG1);
+
+document.body.appendChild(resJS1);
+//document.body.appendChild(resJS2);
+document.body.appendChild(resJS3);
+
+
+resJS.onload = resJS.onreadystatechange = function () {
+    if(!done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+        done = true;
+        rescallback();
+		 
+        // Handle memory leak in IE
+        resJS.onload = resJS.onreadystatechange = null;
+        document.body.removeChild(resJS);
+		//console.log("Res Data--Qid:" + Qid + "--polNo:" + polNo + "--premium:" + premium + "--policyname:" + policyname);
+		//console.log('Res Bulk : ' + JSON.stringify(dataLayer));
+    }
+};
+
+function rescallback() {
+    if (done) {
+        try { clicky.init(101117705); } catch (e) { }
+        setTimeout(function(){ fnTrackUrl('48469b6c-7024-41a4-97b3-702b052eb6e4') },2000);
+		
+        //setTimeout(function(){ fnResWebNotify('48469b6c-7024-41a4-97b3-702b052eb6e4') },2000);
+		try{
+			setTimeout(function(){
+			var client = new ClientJS();
+var fingerprint = client.getFingerprint(); // Calculate Device/Browser Fingerprint
+var device = client.getDevice();
+var deviceType = client.getDeviceType();
+var deviceVendor = client.getDeviceVendor();
+var cpuType = client.getCPU();
+var screenPrint = client.getScreenPrint();
+var screenColorDepth = client.getColorDepth();
+var screenResolution = client.getCurrentResolution();
+var screenAvailResolution = client.getAvailableResolution();
+var screenDeviceXPI = client.getDeviceXDPI();
+var screenDeviceYPI = client.getDeviceYDPI();
+var osType = client.getOS();
+var osVersion = client.getOSVersion();
+var isWindows =  client.isWindows();
+var isMac = client.isMac();
+var isLinux = client.isLinux();
+var isUbuntu = client.isUbuntu();
+var isSolaris = client.isSolaris();
+var isMobileBased = client.isMobile();
+var isMobileMajor = client.isMobileMajor();
+var isMobileAndroid = client.isMobileAndroid();
+var isMobileOpera =  client.isMobileOpera();
+var isMobileWindows = client.isMobileWindows();
+var isMobileBlackBerry = client.isMobileBlackBerry();
+var isMobileIOS = client.isMobileIOS();
+var isIphone = client.isIphone();
+var isIpad = client.isIpad();
+var isIpod = client.isIpod();
+var clientBrowser = client.getBrowserData();
+var userAgent = client.getUserAgent();
+var timezone = client.getTimeZone();
+var language = client.getLanguage();
+var sysLanguage = client.getSystemLanguage();
+
+
+var browser = clientBrowser.browser;
+var jsBrowserData = 
+{
+	ua:clientBrowser.ua,
+	browser:clientBrowser.browser,
+	name:clientBrowser.name,
+	engine:clientBrowser.engine,
+	os:clientBrowser.os,
+	device:clientBrowser.device,
+	cpu:clientBrowser.cpu
+};
+var loc = window.location;
+var currentURL = loc.protocol + '//' + loc.host + loc.pathname;
+currentURL = document.URL;
+
+var deviceData = {
+FP:fingerprint,
+device:device,
+deviceType:deviceType,
+deviceVendor:deviceVendor,
+timezone:timezone,
+language:language,
+sysLanguage:sysLanguage,
+cpuType:cpuType,
+screenPrint:screenPrint,
+browserData:jsBrowserData,
+dbId:'48469b6c-7024-41a4-97b3-702b052eb6e4',
+urlreferrer:currentURL,
+dpid:'',
+cpid:'',
+spid:'',
+rpid:'',
+chnlp:''
+};
+fnTrackUrlwithData('48469b6c-7024-41a4-97b3-702b052eb6e4', deviceData);
+
+	//alert( fingerprint );
+	//console.log('FP: ' + fingerprint);
+	//console.log('device : ' + device);
+	//console.log('deviceType : ' + deviceType);
+	//console.log('deviceVendor: ' + deviceVendor);
+	//console.log('timezone : ' + timezone);
+	//console.log('language : ' + language);
+	//console.log('sysLanguage: ' + sysLanguage);
+	//console.log('cpuType: ' + cpuType);
+	//console.log('screenPrint: ' + screenPrint);
+	//console.log('screenColorDepth: ' + screenColorDepth);
+	//console.log('screenResolution: ' + screenResolution);
+	//console.log('screenAvailResolution: ' + screenAvailResolution);
+	//console.log('screenDeviceXPI: ' + screenDeviceXPI);
+	//console.log('screenDeviceYPI: ' + screenDeviceYPI);
+	//console.log('osType: ' + osType);
+	//console.log('osVersion: ' + osVersion);
+	//console.log('isWindows: ' + isWindows);
+	//console.log('isMac: ' + isMac);
+	//console.log('isLinux: ' + isLinux);
+	//console.log('isUbuntu: ' + isUbuntu);
+	//console.log('isSolaris: ' + isSolaris);
+	//console.log('isMobileBased: ' + isMobileBased);
+	//console.log('isMobileMajor: ' + isMobileMajor);
+	//console.log('isMobileAndroid: ' + isMobileAndroid);
+	//console.log('isMobileOpera: ' + isMobileOpera);
+	//console.log('isMobileWindows: ' + isMobileWindows);
+	//console.log('isMobileBlackBerry: ' + isMobileBlackBerry);
+	//console.log('isMobileIOS: ' + isMobileIOS);
+	//console.log('isIphone: ' + isIphone);
+	//console.log('isIpod: ' + isIpod);
+	//console.log('User Agent : '  + JSON.stringify(userAgent)),
+	//console.log('Browser Data : '  + JSON.stringify(clientBrowser));
+	}, 2000);
+	
+		}
+		catch(ex) { console.log('ex' + ex);}
+		finally{
+			//clear
+		}
+    }
+}
+
+
+  function fnLitmus() {
+  //console.log('res=kts');
+  }
+
+  //console.log("Resulticks SDK!");
+
+ //fnLitmus();
+}());
+//</script>
+ 
