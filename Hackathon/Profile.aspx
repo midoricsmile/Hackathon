@@ -54,7 +54,67 @@
 		<link rel="apple-touch-startup-image" href="smartadmin/img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
 		<link rel="apple-touch-startup-image" href="smartadmin/img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
 		<link rel="apple-touch-startup-image" href="smartadmin/img/splash/iphone.png" media="screen and (max-device-width: 320px)">
-
+        <style>
+            .home-2 .nav_area {
+    background: #078145 none repeat scroll 0 0;
+    border-bottom: none;
+    padding: 20px 0;
+}
+            .nav_area {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    padding: 33px 0;
+    border-bottom: 1px solid #B6B1B1;
+    background: transparent;
+    background: #078145 none repeat scroll 0 0;
+    border-bottom: none;
+    padding: 20px 0;
+}
+            .stick {
+    padding: 15px 0px;
+    transition: 1s;
+    background: rgba(0, 0, 0, .7);
+    position: fixed !important;
+    color: #fff;
+    background: #078145 none repeat scroll 0 0;
+    border-bottom: none;
+   
+}
+            .menu {
+                padding-top:10px;
+            }
+            .menu ul li {
+    display: inline;
+}
+            .menu ul {
+    text-align: right;
+    
+}
+            .menu ul li a {
+    display: inline-block;
+    padding: 5px 14px 6px;
+    text-transform: uppercase;
+    color: #323b48;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    -moz-transition: .3s;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    -ms-transition: .3s;
+    transition: .3s;
+    line-height: 21px;
+}
+            .menu .current > a {
+    background: #ffaa31 none repeat scroll 0 0;
+    color: #fff;
+}
+            .menu .current > a, .menu ul li a:hover {
+    background: #53B554 none repeat scroll 0 0;
+}
+        </style>
 	</head>
 	
 	<!--
@@ -101,11 +161,12 @@
 		* 'fixed-page-footer' - Fixes footer
 		* 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
 	-->
-	<body class="">
+	<body class="" style=" padding-top: 50px;">
 
 		<!-- HEADER -->
-		<header id="header">
-			<div id="logo-group">
+		<header id="home-2" style="z-index:905">
+
+			<%--<div id="logo-group">
 
 				<!-- PLACE YOUR LOGO HERE -->
 				<span id="logo"> <img src="img/logo.png" alt="SmartAdmin"> </span>
@@ -333,15 +394,44 @@
 				</ul>
 				<!-- end multiple lang -->
 
-			</div>
+			</div>--%>
 			<!-- end pulled right: nav area -->
+            <div class="nav_area stick" id="sticker">
+    <div class="container">
+        <div class="row">
+            <!--logo area-->
+            <div class="col-md-2 col-sm-2 col-xs-4">
+                <div class="logo">
+                    <a href="https://vaytinchap.vpbank.com.vn/LOSWebDE/?utm_source=vpbank.com.vn&amp;utm_medium=referral&amp;utm_campaign=UPL.Generic&amp;utm_content=productpage#vay-tin-chap"><img src="./Vay tín chấp tiêu dùng VPBank - NH Việt Nam Thịnh Vượng_files/logo.png" alt="Vay tín chấp tiêu dùng VPBank">
+                        
+                    </a>
+                </div>
 
+            </div>
+            <!--end logo area-->
+            <!--nav area-->
+            <div class="col-md-10 col-sm-10 col-xs-8">
+                <div class="menu">
+                    <ul class="navid ">
+                        <li class="current"><a href="https://vaytinchap.vpbank.com.vn/LOSWebDE/?utm_source=vpbank.com.vn&amp;utm_medium=referral&amp;utm_campaign=UPL.Generic&amp;utm_content=productpage#vay-tin-chap">Vay nhanh</a></li>
+                        
+                        <li class="vay-ngay"><a href="https://vaytinchap.vpbank.com.vn/LOSWebDE/?utm_source=vpbank.com.vn&amp;utm_medium=referral&amp;utm_campaign=UPL.Generic&amp;utm_content=productpage#vay-ngay"><img src="./Vay tín chấp tiêu dùng VPBank - NH Việt Nam Thịnh Vượng_files/vpbank-logo-white.png"></a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <!--moblie menu area-->
+            
+            <!--end nav area-->
+        </div>
+    </div>
+</div>
 		</header>
 		<!-- END HEADER -->
 
 		<!-- Left panel : Navigation area -->
 		<!-- Note: This width of the aside area can be adjusted through LESS variables -->
-		<aside id="left-panel">
+		<%--<aside id="left-panel" style="top:inherit">
 
 			<!-- User info -->
 			<div class="login-info">
@@ -796,7 +886,7 @@
 				<i class="fa fa-arrow-circle-left hit"></i> 
 			</span>
 
-		</aside>
+		</aside>--%>
 		<!-- END NAVIGATION -->
 
 		<!-- MAIN PANEL -->
