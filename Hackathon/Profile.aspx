@@ -3,121 +3,134 @@
 
 <!DOCTYPE html>
 <html lang="en-us">
-	<head runat="server">
-		<meta charset="utf-8">
-		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+<head runat="server">
+    <meta charset="utf-8">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 
-		<title> SmartAdmin </title>
-		<meta name="description" content="">
-		<meta name="author" content="">
-			
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SmartAdmin </title>
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-		<!-- Basic Styles -->
-		<link rel="stylesheet" type="text/css" media="screen" href="smartadmin/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" media="screen" href="smartadmin/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<!-- SmartAdmin Styles : Caution! DO NOT change the order -->
-		<link rel="stylesheet" type="text/css" media="screen" href="smartadmin/css/smartadmin-production-plugins.min.css">
-		<link rel="stylesheet" type="text/css" media="screen" href="smartadmin/css/smartadmin-production.min.css">
-		<link rel="stylesheet" type="text/css" media="screen" href="smartadmin/css/smartadmin-skins.min.css">
+    <!-- Basic Styles -->
+    <link rel="stylesheet" type="text/css" media="screen" href="smartadmin/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="smartadmin/css/font-awesome.min.css">
 
-		<!-- SmartAdmin RTL Support -->
-		<link rel="stylesheet" type="text/css" media="screen" href="smartadmin/css/smartadmin-rtl.min.css"> 
+    <!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+    <link rel="stylesheet" type="text/css" media="screen" href="smartadmin/css/smartadmin-production-plugins.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="smartadmin/css/smartadmin-production.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="smartadmin/css/smartadmin-skins.min.css">
 
-		<!-- We recommend you use "your_style.css" to override SmartAdmin
+    <!-- SmartAdmin RTL Support -->
+    <link rel="stylesheet" type="text/css" media="screen" href="smartadmin/css/smartadmin-rtl.min.css">
+
+    <!-- We recommend you use "your_style.css" to override SmartAdmin
 		     specific styles this will also ensure you retrain your customization with each SmartAdmin update.
 		<link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css"> -->
 
-		<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
-		<link rel="stylesheet" type="text/css" media="screen" href="smartadmin/css/demo.min.css">
+    <!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+    <link rel="stylesheet" type="text/css" media="screen" href="smartadmin/css/demo.min.css">
 
-		<!-- FAVICONS -->
-		<link rel="shortcut icon" href="smartadmin/img/favicon/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="smartadmin/img/favicon/favicon.ico" type="image/x-icon">
+    <!-- FAVICONS -->
+    <link rel="shortcut icon" href="smartadmin/img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="smartadmin/img/favicon/favicon.ico" type="image/x-icon">
 
-		<!-- GOOGLE FONT -->
-		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+    <!-- GOOGLE FONT -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
 
-		<!-- Specifying a Webpage Icon for Web Clip 
+    <!-- Specifying a Webpage Icon for Web Clip 
 			 Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
-		<link rel="apple-touch-icon" href="smartadmin/img/splash/sptouch-icon-iphone.png">
-		<link rel="apple-touch-icon" sizes="76x76" href="smartadmin/img/splash/touch-icon-ipad.png">
-		<link rel="apple-touch-icon" sizes="120x120" href="smartadmin/img/splash/touch-icon-iphone-retina.png">
-		<link rel="apple-touch-icon" sizes="152x152" href="smartadmin/img/splash/touch-icon-ipad-retina.png">
-		
-		<!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		
-		<!-- Startup image for web apps -->
-		<link rel="apple-touch-startup-image" href="smartadmin/img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
-		<link rel="apple-touch-startup-image" href="smartadmin/img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
-		<link rel="apple-touch-startup-image" href="smartadmin/img/splash/iphone.png" media="screen and (max-device-width: 320px)">
-        <style>
-            .home-2 .nav_area {
-    background: #078145 none repeat scroll 0 0;
-    border-bottom: none;
-    padding: 20px 0;
-}
-            .nav_area {
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 9999;
-    padding: 33px 0;
-    border-bottom: 1px solid #B6B1B1;
-    background: transparent;
-    background: #078145 none repeat scroll 0 0;
-    border-bottom: none;
-    padding: 20px 0;
-}
-            .stick {
-    padding: 15px 0px;
-    transition: 1s;
-    background: rgba(0, 0, 0, .7);
-    position: fixed !important;
-    color: #fff;
-    background: #078145 none repeat scroll 0 0;
-    border-bottom: none;
-   
-}
-            .menu {
-                padding-top:10px;
-            }
+    <link rel="apple-touch-icon" href="smartadmin/img/splash/sptouch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="smartadmin/img/splash/touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="smartadmin/img/splash/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="smartadmin/img/splash/touch-icon-ipad-retina.png">
+
+    <!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="smartadmin/js/libs/jquery-2.1.1.min.js"></script>
+    <script>
+
+        function profile(data) {
+            alert(data);
+        }
+
+    </script>
+    <!-- Startup image for web apps -->
+    <link rel="apple-touch-startup-image" href="smartadmin/img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+    <link rel="apple-touch-startup-image" href="smartadmin/img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+    <link rel="apple-touch-startup-image" href="smartadmin/img/splash/iphone.png" media="screen and (max-device-width: 320px)">
+    <style>
+        .home-2 .nav_area {
+            background: #078145 none repeat scroll 0 0;
+            border-bottom: none;
+            padding: 20px 0;
+        }
+
+        .nav_area {
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+            padding: 33px 0;
+            border-bottom: 1px solid #B6B1B1;
+            background: transparent;
+            background: #078145 none repeat scroll 0 0;
+            border-bottom: none;
+            padding: 20px 0;
+        }
+
+        .stick {
+            padding: 15px 0px;
+            transition: 1s;
+            background: rgba(0, 0, 0, .7);
+            position: fixed !important;
+            color: #fff;
+            background: #078145 none repeat scroll 0 0;
+            border-bottom: none;
+        }
+
+        .menu {
+            padding-top: 10px;
+        }
+
             .menu ul li {
-    display: inline;
-}
+                display: inline;
+            }
+
             .menu ul {
-    text-align: right;
-    
-}
-            .menu ul li a {
-    display: inline-block;
-    padding: 5px 14px 6px;
-    text-transform: uppercase;
-    color: #323b48;
-    font-weight: bold;
-    font-family: 'Open Sans', sans-serif;
-    -moz-transition: .3s;
-    -webkit-transition: .3s;
-    -o-transition: .3s;
-    -ms-transition: .3s;
-    transition: .3s;
-    line-height: 21px;
-}
+                text-align: right;
+            }
+
+                .menu ul li a {
+                    display: inline-block;
+                    padding: 5px 14px 6px;
+                    text-transform: uppercase;
+                    color: #323b48;
+                    font-weight: bold;
+                    font-family: 'Open Sans', sans-serif;
+                    -moz-transition: .3s;
+                    -webkit-transition: .3s;
+                    -o-transition: .3s;
+                    -ms-transition: .3s;
+                    transition: .3s;
+                    line-height: 21px;
+                }
+
             .menu .current > a {
-    background: #ffaa31 none repeat scroll 0 0;
-    color: #fff;
-}
+                background: #ffaa31 none repeat scroll 0 0;
+                color: #fff;
+            }
+
             .menu .current > a, .menu ul li a:hover {
-    background: #53B554 none repeat scroll 0 0;
-}
-        </style>
-	</head>
-	
-	<!--
+                background: #53B554 none repeat scroll 0 0;
+            }
+    </style>
+</head>
+
+<!--
 
 	TABLE OF CONTENTS.
 	
@@ -146,9 +159,9 @@
 	===================================================================
 	
 	-->
-	
-	<!-- #BODY -->
-	<!-- Possible Classes
+
+<!-- #BODY -->
+<!-- Possible Classes
 
 		* 'smart-style-{SKIN#}'
 		* 'smart-rtl'         - Switch theme mode to RTL
@@ -161,12 +174,12 @@
 		* 'fixed-page-footer' - Fixes footer
 		* 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
 	-->
-	<body class="" style=" padding-top: 50px;">
+<body class="" style="padding-top: 50px;">
 
-		<!-- HEADER -->
-		<header id="home-2" style="z-index:905">
+    <!-- HEADER -->
+    <header id="home-2" style="z-index: 905">
 
-			<%--<div id="logo-group">
+        <%--<div id="logo-group">
 
 				<!-- PLACE YOUR LOGO HERE -->
 				<span id="logo"> <img src="img/logo.png" alt="SmartAdmin"> </span>
@@ -395,43 +408,44 @@
 				<!-- end multiple lang -->
 
 			</div>--%>
-			<!-- end pulled right: nav area -->
-            <div class="nav_area stick" id="sticker">
-    <div class="container">
-        <div class="row">
-            <!--logo area-->
-            <div class="col-md-2 col-sm-2 col-xs-4">
-                <div class="logo">
-                    <a href="https://vaytinchap.vpbank.com.vn/LOSWebDE/?utm_source=vpbank.com.vn&amp;utm_medium=referral&amp;utm_campaign=UPL.Generic&amp;utm_content=productpage#vay-tin-chap"><img src="./Vay tín chấp tiêu dùng VPBank - NH Việt Nam Thịnh Vượng_files/logo.png" alt="Vay tín chấp tiêu dùng VPBank">
-                        
-                    </a>
-                </div>
+        <!-- end pulled right: nav area -->
+        <div class="nav_area stick" id="sticker">
+            <div class="container">
+                <div class="row">
+                    <!--logo area-->
+                    <div class="col-md-2 col-sm-2 col-xs-4">
+                        <div class="logo">
+                            <a href="https://vaytinchap.vpbank.com.vn/LOSWebDE/?utm_source=vpbank.com.vn&amp;utm_medium=referral&amp;utm_campaign=UPL.Generic&amp;utm_content=productpage#vay-tin-chap">
+                                <img src="./Vay tín chấp tiêu dùng VPBank - NH Việt Nam Thịnh Vượng_files/logo.png" alt="Vay tín chấp tiêu dùng VPBank">
+                            </a>
+                        </div>
 
-            </div>
-            <!--end logo area-->
-            <!--nav area-->
-            <div class="col-md-10 col-sm-10 col-xs-8">
-                <div class="menu">
-                    <ul class="navid ">
-                        <li class="current"><a href="https://vaytinchap.vpbank.com.vn/LOSWebDE/?utm_source=vpbank.com.vn&amp;utm_medium=referral&amp;utm_campaign=UPL.Generic&amp;utm_content=productpage#vay-tin-chap">Vay nhanh</a></li>
-                        
-                        <li class="vay-ngay"><a href="https://vaytinchap.vpbank.com.vn/LOSWebDE/?utm_source=vpbank.com.vn&amp;utm_medium=referral&amp;utm_campaign=UPL.Generic&amp;utm_content=productpage#vay-ngay"><img src="./Vay tín chấp tiêu dùng VPBank - NH Việt Nam Thịnh Vượng_files/vpbank-logo-white.png"></a></li>
+                    </div>
+                    <!--end logo area-->
+                    <!--nav area-->
+                    <div class="col-md-10 col-sm-10 col-xs-8">
+                        <div class="menu">
+                            <ul class="navid ">
+                                <li class="current"><a href="https://vaytinchap.vpbank.com.vn/LOSWebDE/?utm_source=vpbank.com.vn&amp;utm_medium=referral&amp;utm_campaign=UPL.Generic&amp;utm_content=productpage#vay-tin-chap">Vay nhanh</a></li>
 
-                    </ul>
+                                <li class="vay-ngay"><a href="https://vaytinchap.vpbank.com.vn/LOSWebDE/?utm_source=vpbank.com.vn&amp;utm_medium=referral&amp;utm_campaign=UPL.Generic&amp;utm_content=productpage#vay-ngay">
+                                    <img src="./Vay tín chấp tiêu dùng VPBank - NH Việt Nam Thịnh Vượng_files/vpbank-logo-white.png"></a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!--moblie menu area-->
+
+                    <!--end nav area-->
                 </div>
             </div>
-            <!--moblie menu area-->
-            
-            <!--end nav area-->
         </div>
-    </div>
-</div>
-		</header>
-		<!-- END HEADER -->
+    </header>
+    <!-- END HEADER -->
 
-		<!-- Left panel : Navigation area -->
-		<!-- Note: This width of the aside area can be adjusted through LESS variables -->
-		<%--<aside id="left-panel" style="top:inherit">
+    <!-- Left panel : Navigation area -->
+    <!-- Note: This width of the aside area can be adjusted through LESS variables -->
+    <%--<aside id="left-panel" style="top:inherit">
 
 			<!-- User info -->
 			<div class="login-info">
@@ -887,27 +901,29 @@
 			</span>
 
 		</aside>--%>
-		<!-- END NAVIGATION -->
+    <!-- END NAVIGATION -->
 
-		<!-- MAIN PANEL -->
-		<div id="main" role="main">
+    <!-- MAIN PANEL -->
+    <div id="main" role="main">
 
-			<!-- RIBBON -->
-			<div id="ribbon">
+        <!-- RIBBON -->
+        <div id="ribbon">
 
-				<span class="ribbon-button-alignment"> 
-					<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
-						<i class="fa fa-refresh"></i>
-					</span> 
-				</span>
+            <span class="ribbon-button-alignment">
+                <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+                    <i class="fa fa-refresh"></i>
+                </span>
+            </span>
 
-				<!-- breadcrumb -->
-				<ol class="breadcrumb">
-					<li>Home</li><li>App Views</li><li>Profile</li>
-				</ol>
-				<!-- end breadcrumb -->
+            <!-- breadcrumb -->
+            <ol class="breadcrumb">
+                <li>Home</li>
+                <li>App Views</li>
+                <li>Profile</li>
+            </ol>
+            <!-- end breadcrumb -->
 
-				<!-- You can also add more buttons to the
+            <!-- You can also add more buttons to the
 				ribbon for further usability
 
 				Example below:
@@ -918,776 +934,827 @@
 				<span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
 				</span> -->
 
-			</div>
-			<!-- END RIBBON -->
+        </div>
+        <!-- END RIBBON -->
 
-			<!-- MAIN CONTENT -->
-			<div id="content">
+        <!-- MAIN CONTENT -->
+        <div id="content">
 
-				<!-- Bread crumb is created dynamically -->
-				<!-- row -->
-				<div class="row">
-				
-					<!-- col -->
-					<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-						<h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-puzzle-piece"></i> App Views <span>>
+            <!-- Bread crumb is created dynamically -->
+            <!-- row -->
+            <div class="row">
+
+                <!-- col -->
+                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+                    <h1 class="page-title txt-color-blueDark">
+                        <!-- PAGE HEADER -->
+                        <i class="fa-fw fa fa-puzzle-piece"></i>App Views <span>>
 							Profile </span></h1>
-					</div>
-					<!-- end col -->
-				
-					<!-- right side of the page with the sparkline graphs -->
-					<!-- col -->
-					<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
-						<!-- sparks -->
-						<ul id="sparks">
-							<li class="sparks-info">
-								<h5> My Income <span class="txt-color-blue">$47,171</span></h5>
-								<div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
-									1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
-								</div>
-							</li>
-							<li class="sparks-info">
-								<h5> Site Traffic <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
-								<div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
-									110,150,300,130,400,240,220,310,220,300, 270, 210
-								</div>
-							</li>
-							<li class="sparks-info">
-								<h5> Site Orders <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span></h5>
-								<div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
-									110,150,300,130,400,240,220,310,220,300, 270, 210
-								</div>
-							</li>
-						</ul>
-						<!-- end sparks -->
-					</div>
-					<!-- end col -->
-				
-				</div>
-				<!-- end row -->
-				
-				<!-- row -->
-				
-				<div class="row">
-				
-					<div class="col-sm-12">
-				
-				
-							<div class="well well-sm">
-				
-								<div class="row">
-				
-									<div class="col-sm-12 col-md-12 col-lg-6">
-										<div class="well well-light well-sm no-margin no-padding">
-				
-											<div class="row">
-				
-												<div class="col-sm-12">
-													<div id="myCarousel" class="carousel fade profile-carousel">
-														<div class="air air-bottom-right padding-10">
-															<a href="javascript:void(0);" class="btn txt-color-white bg-color-teal btn-sm"><i class="fa fa-check"></i> Follow</a>&nbsp; <a href="javascript:void(0);" class="btn txt-color-white bg-color-pinkDark btn-sm"><i class="fa fa-link"></i> Connect</a>
-														</div>
-														<div class="air air-top-left padding-10">
-															<h4 class="txt-color-white font-md">Jan 1, 2014</h4>
-														</div>
-														<ol class="carousel-indicators">
-															<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-															<li data-target="#myCarousel" data-slide-to="1" class=""></li>
-															<li data-target="#myCarousel" data-slide-to="2" class=""></li>
-														</ol>
-														<div class="carousel-inner">
-															<!-- Slide 1 -->
-															<div class="item active">
-																<img src="img/demo/s1.jpg" alt="demo user">
-															</div>
-															<!-- Slide 2 -->
-															<div class="item">
-																<img src="img/demo/s2.jpg" alt="demo user">
-															</div>
-															<!-- Slide 3 -->
-															<div class="item">
-																<img src="img/demo/m3.jpg" alt="demo user">
-															</div>
-														</div>
-													</div>
-												</div>
-				
-												<div class="col-sm-12">
-				
-													<div class="row">
-				
-														<div class="col-sm-3 profile-pic">
-															<img src="img/avatars/sunny-big.png" alt="demo user">
-															<div class="padding-10">
-																<h4 class="font-md"><strong>1,543</strong>
-																<br>
-																<small>Followers</small></h4>
-																<br>
-																<h4 class="font-md"><strong>419</strong>
-																<br>
-																<small>Connections</small></h4>
-															</div>
-														</div>
-														<div class="col-sm-6">
-															<h1>John <span class="semi-bold">Doe</span>
-															<br>
-															<small> CEO, SmartAdmin</small></h1>
-				
-															<ul class="list-unstyled">
-																<li>
-																	<p class="text-muted">
-																		<i class="fa fa-phone"></i>&nbsp;&nbsp;(<span class="txt-color-darken">313</span>) <span class="txt-color-darken">464</span> - <span class="txt-color-darken">6473</span>
-																	</p>
-																</li>
-																<li>
-																	<p class="text-muted">
-																		<i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:simmons@smartadmin">ceo@smartadmin.com</a>
-																	</p>
-																</li>
-																<li>
-																	<p class="text-muted">
-																		<i class="fa fa-skype"></i>&nbsp;&nbsp;<span class="txt-color-darken">john12</span>
-																	</p>
-																</li>
-																<li>
-																	<p class="text-muted">
-																		<i class="fa fa-calendar"></i>&nbsp;&nbsp;<span class="txt-color-darken">Free after <a href="javascript:void(0);" rel="tooltip" title="" data-placement="top" data-original-title="Create an Appointment">4:30 PM</a></span>
-																	</p>
-																</li>
-															</ul>
-															<br>
-															<p class="font-md">
-																<i>A little about me...</i>
-															</p>
-															<p>
-				
-																Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio
+                </div>
+                <!-- end col -->
+
+                <!-- right side of the page with the sparkline graphs -->
+                <!-- col -->
+                <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+                    <!-- sparks -->
+                    <ul id="sparks">
+                        <li class="sparks-info">
+                            <h5>My Income <span class="txt-color-blue">$47,171</span></h5>
+                            <div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
+                                1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
+                            </div>
+                        </li>
+                        <li class="sparks-info">
+                            <h5>Site Traffic <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
+                            <div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
+                                110,150,300,130,400,240,220,310,220,300, 270, 210
+                            </div>
+                        </li>
+                        <li class="sparks-info">
+                            <h5>Site Orders <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span></h5>
+                            <div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
+                                110,150,300,130,400,240,220,310,220,300, 270, 210
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- end sparks -->
+                </div>
+                <!-- end col -->
+
+            </div>
+            <!-- end row -->
+
+            <!-- row -->
+
+            <div class="row">
+
+                <div class="col-sm-12">
+
+
+                    <div class="well well-sm">
+
+                        <div class="row">
+
+                            <div class="col-sm-12 col-md-12 col-lg-6">
+                                <div class="well well-light well-sm no-margin no-padding">
+
+                                    <div class="row">
+
+                                        <div class="col-sm-12">
+                                            <div id="myCarousel" class="carousel fade profile-carousel">
+                                                <div class="air air-bottom-right padding-10">
+                                                    <a href="javascript:void(0);" class="btn txt-color-white bg-color-teal btn-sm"><i class="fa fa-check"></i>Follow</a>&nbsp; <a href="javascript:void(0);" class="btn txt-color-white bg-color-pinkDark btn-sm"><i class="fa fa-link"></i>Connect</a>
+                                                </div>
+                                                <div class="air air-top-left padding-10">
+                                                    <h4 class="txt-color-white font-md">Jan 1, 2014</h4>
+                                                </div>
+                                                <ol class="carousel-indicators">
+                                                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                                    <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                                                    <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+                                                </ol>
+                                                <div class="carousel-inner">
+                                                    <!-- Slide 1 -->
+                                                    <div class="item active">
+                                                        <img src="img/demo/s1.jpg" alt="demo user">
+                                                    </div>
+                                                    <!-- Slide 2 -->
+                                                    <div class="item">
+                                                        <img src="img/demo/s2.jpg" alt="demo user">
+                                                    </div>
+                                                    <!-- Slide 3 -->
+                                                    <div class="item">
+                                                        <img src="img/demo/m3.jpg" alt="demo user">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12">
+
+                                            <div class="row">
+
+                                                <div class="col-sm-3 profile-pic">
+                                                    <img src="img/avatars/sunny-big.png" alt="demo user">
+                                                    <div class="padding-10">
+                                                        <h4 class="font-md"><strong>1,543</strong>
+                                                            <br>
+                                                            <small>Followers</small></h4>
+                                                        <br>
+                                                        <h4 class="font-md"><strong>419</strong>
+                                                            <br>
+                                                            <small>Connections</small></h4>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <h1>John <span class="semi-bold">Doe</span>
+                                                        <br>
+                                                        <small>CEO, SmartAdmin</small></h1>
+
+                                                    <ul class="list-unstyled">
+                                                        <li>
+                                                            <p class="text-muted">
+                                                                <i class="fa fa-phone"></i>&nbsp;&nbsp;(<span class="txt-color-darken">313</span>) <span class="txt-color-darken">464</span> - <span class="txt-color-darken">6473</span>
+                                                            </p>
+                                                        </li>
+                                                        <li>
+                                                            <p class="text-muted">
+                                                                <i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:simmons@smartadmin">ceo@smartadmin.com</a>
+                                                            </p>
+                                                        </li>
+                                                        <li>
+                                                            <p class="text-muted">
+                                                                <i class="fa fa-skype"></i>&nbsp;&nbsp;<span class="txt-color-darken">john12</span>
+                                                            </p>
+                                                        </li>
+                                                        <li>
+                                                            <p class="text-muted">
+                                                                <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span class="txt-color-darken">Free after <a href="javascript:void(0);" rel="tooltip" title="" data-placement="top" data-original-title="Create an Appointment">4:30 PM</a></span>
+                                                            </p>
+                                                        </li>
+                                                    </ul>
+                                                    <br>
+                                                    <p class="font-md">
+                                                        <i>A little about me...</i>
+                                                    </p>
+                                                    <p>
+                                                        Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio
 																cumque nihil impedit quo minus id quod maxime placeat facere
 				
-															</p>
-															<br>
-															<a href="javascript:void(0);" class="btn btn-default btn-xs"><i class="fa fa-envelope-o"></i> Send Message</a>
-															<br>
-															<br>
-				
-														</div>
-														<div class="col-sm-3">
-															<h1><small>Connections</small></h1>
-															<ul class="list-inline friends-list">
-																<li><img src="img/avatars/1.png" alt="friend-1">
-																</li>
-																<li><img src="img/avatars/2.png" alt="friend-2">
-																</li>
-																<li><img src="img/avatars/3.png" alt="friend-3">
-																</li>
-																<li><img src="img/avatars/4.png" alt="friend-4">
-																</li>
-																<li><img src="img/avatars/5.png" alt="friend-5">
-																</li>
-																<li><img src="img/avatars/male.png" alt="friend-6">
-																</li>
-																<li>
-																	<a href="javascript:void(0);">413 more</a>
-																</li>
-															</ul>
-				
-															<h1><small>Recent visitors</small></h1>
-															<ul class="list-inline friends-list">
-																<li><img src="img/avatars/male.png" alt="friend-1">
-																</li>
-																<li><img src="img/avatars/female.png" alt="friend-2">
-																</li>
-																<li><img src="img/avatars/female.png" alt="friend-3">
-																</li>
-															</ul>
-				
-														</div>
-				
-													</div>
-				
-												</div>
-				
-											</div>
-				
-											<div class="row">
-				
-												<div class="col-sm-12">
-				
-													<hr>
-				
-													<div class="padding-10">
-				
-														<ul class="nav nav-tabs tabs-pull-right">
-															<li class="active">
-																<a href="#a1" data-toggle="tab">Recent Articles</a>
-															</li>
-															<li>
-																<a href="#a2" data-toggle="tab">New Members</a>
-															</li>
-															<li class="pull-left">
-																<span class="margin-top-10 display-inline"><i class="fa fa-rss text-success"></i> Activity</span>
-															</li>
-														</ul>
-				
-														<div class="tab-content padding-top-10">
-															<div class="tab-pane fade in active" id="a1">
-				
-																<div class="row">
-				
-																	<div class="col-xs-2 col-sm-1">
-																		<time datetime="2014-09-20" class="icon">
-																			<strong>Jan</strong>
-																			<span>10</span>
-																		</time>
-																	</div>
-				
-																	<div class="col-xs-10 col-sm-11">
-																		<h6 class="no-margin"><a href="javascript:void(0);">Allice in Wonderland</a></h6>
-																		<p>
-																			Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi Nam eget dui.
+                                                    </p>
+                                                    <br>
+                                                    <a href="javascript:void(0);" class="btn btn-default btn-xs"><i class="fa fa-envelope-o"></i>Send Message</a>
+                                                    <br>
+                                                    <br>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <h1><small>Connections</small></h1>
+                                                    <ul class="list-inline friends-list">
+                                                        <li>
+                                                            <img src="img/avatars/1.png" alt="friend-1">
+                                                        </li>
+                                                        <li>
+                                                            <img src="img/avatars/2.png" alt="friend-2">
+                                                        </li>
+                                                        <li>
+                                                            <img src="img/avatars/3.png" alt="friend-3">
+                                                        </li>
+                                                        <li>
+                                                            <img src="img/avatars/4.png" alt="friend-4">
+                                                        </li>
+                                                        <li>
+                                                            <img src="img/avatars/5.png" alt="friend-5">
+                                                        </li>
+                                                        <li>
+                                                            <img src="img/avatars/male.png" alt="friend-6">
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:void(0);">413 more</a>
+                                                        </li>
+                                                    </ul>
+
+                                                    <h1><small>Recent visitors</small></h1>
+                                                    <ul class="list-inline friends-list">
+                                                        <li>
+                                                            <img src="img/avatars/male.png" alt="friend-1">
+                                                        </li>
+                                                        <li>
+                                                            <img src="img/avatars/female.png" alt="friend-2">
+                                                        </li>
+                                                        <li>
+                                                            <img src="img/avatars/female.png" alt="friend-3">
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-sm-12">
+
+                                            <hr>
+
+                                            <div class="padding-10">
+
+                                                <ul class="nav nav-tabs tabs-pull-right">
+                                                    <li class="active">
+                                                        <a href="#a1" data-toggle="tab">Recent Articles</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#a2" data-toggle="tab">New Members</a>
+                                                    </li>
+                                                    <li class="pull-left">
+                                                        <span class="margin-top-10 display-inline"><i class="fa fa-rss text-success"></i>Activity</span>
+                                                    </li>
+                                                </ul>
+
+                                                <div class="tab-content padding-top-10">
+                                                    <div class="tab-pane fade in active" id="a1">
+
+                                                        <div class="row">
+
+                                                            <div class="col-xs-2 col-sm-1">
+                                                                <time datetime="2014-09-20" class="icon">
+                                                                    <strong>Jan</strong>
+                                                                    <span>10</span>
+                                                                </time>
+                                                            </div>
+
+                                                            <div class="col-xs-10 col-sm-11">
+                                                                <h6 class="no-margin"><a href="javascript:void(0);">Allice in Wonderland</a></h6>
+                                                                <p>
+                                                                    Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi Nam eget dui.
 																			Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero,
 																			sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel.
-																		</p>
-																	</div>
-				
-																	<div class="col-sm-12">
-				
-																		<hr>
-				
-																	</div>
-				
-																	<div class="col-xs-2 col-sm-1">
-																		<time datetime="2014-09-20" class="icon">
-																			<strong>Jan</strong>
-																			<span>10</span>
-																		</time>
-																	</div>
-				
-																	<div class="col-xs-10 col-sm-11">
-																		<h6 class="no-margin"><a href="javascript:void(0);">World Report</a></h6>
-																		<p>
-																			Morning our be dry. Life also third land after first beginning to evening cattle created let subdue you'll winged don't Face firmament.
+                                                                </p>
+                                                            </div>
+
+                                                            <div class="col-sm-12">
+
+                                                                <hr>
+                                                            </div>
+
+                                                            <div class="col-xs-2 col-sm-1">
+                                                                <time datetime="2014-09-20" class="icon">
+                                                                    <strong>Jan</strong>
+                                                                    <span>10</span>
+                                                                </time>
+                                                            </div>
+
+                                                            <div class="col-xs-10 col-sm-11">
+                                                                <h6 class="no-margin"><a href="javascript:void(0);">World Report</a></h6>
+                                                                <asp:Literal ID="testt" runat="server"></asp:Literal>
+                                                                Morning our be dry. Life also third land after first beginning to evening cattle created let subdue you'll winged don't Face firmament.
 																			You winged you're was Fruit divided signs lights i living cattle yielding over light life life sea, so deep.
 																			Abundantly given years bring were after. Greater you're meat beast creeping behold he unto She'd doesn't. Replenish brought kind gathering Meat.
-																		</p>
-																	</div>
-				
-																	<div class="col-sm-12">
-				
-																		<br>
-				
-																	</div>
-				
-																</div>
-				
-															</div>
-															<div class="tab-pane fade" id="a2">
-				
-																<div class="alert alert-info fade in">
-																	<button class="close" data-dismiss="alert">
-																		×
-																	</button>
-																	<i class="fa-fw fa fa-info"></i>
-																	<strong>51 new members </strong>joined today!
-																</div>
-				
-																<div class="user" title="email@company.com">
-																	<img src="img/avatars/female.png" alt="demo user"><a href="javascript:void(0);">Jenn Wilson</a>
-																	<div class="email">
-																		travis@company.com
-																	</div>
-																</div>
-																<div class="user" title="email@company.com">
-																	<img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Marshall Hitt</a>
-																	<div class="email">
-																		marshall@company.com
-																	</div>
-																</div>
-																<div class="user" title="email@company.com">
-																	<img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Joe Cadena</a>
-																	<div class="email">
-																		joe@company.com
-																	</div>
-																</div>
-																<div class="user" title="email@company.com">
-																	<img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Mike McBride</a>
-																	<div class="email">
-																		mike@company.com
-																	</div>
-																</div>
-																<div class="user" title="email@company.com">
-																	<img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Travis Wilson</a>
-																	<div class="email">
-																		travis@company.com
-																	</div>
-																</div>
-																<div class="user" title="email@company.com">
-																	<img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Marshall Hitt</a>
-																	<div class="email">
-																		marshall@company.com
-																	</div>
-																</div>
-																<div class="user" title="Joe Cadena joe@company.com">
-																	<img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Joe Cadena</a>
-																	<div class="email">
-																		joe@company.com
-																	</div>
-																</div>
-																<div class="user" title="email@company.com">
-																	<img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Mike McBride</a>
-																	<div class="email">
-																		mike@company.com
-																	</div>
-																</div>
-																<div class="user" title="email@company.com">
-																	<img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Marshall Hitt</a>
-																	<div class="email">
-																		marshall@company.com
-																	</div>
-																</div>
-																<div class="user" title="email@company.com">
-																	<img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Joe Cadena</a>
-																	<div class="email">
-																		joe@company.com
-																	</div>
-																</div>
-																<div class="user" title="email@company.com">
-																	<img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);"> Mike McBride</a>
-																	<div class="email">
-																		mike@company.com
-																	</div>
-																</div>
-				
-																<div class="text-center">
-																	<ul class="pagination pagination-sm">
-																		<li class="disabled">
-																			<a href="javascript:void(0);">Prev</a>
-																		</li>
-																		<li class="active">
-																			<a href="javascript:void(0);">1</a>
-																		</li>
-																		<li>
-																			<a href="javascript:void(0);">2</a>
-																		</li>
-																		<li>
-																			<a href="javascript:void(0);">3</a>
-																		</li>
-																		<li>
-																			<a href="javascript:void(0);">...</a>
-																		</li>
-																		<li>
-																			<a href="javascript:void(0);">99</a>
-																		</li>
-																		<li>
-																			<a href="javascript:void(0);">Next</a>
-																		</li>
-																	</ul>
-																</div>
-				
-															</div><!-- end tab -->
-														</div>
-				
-													</div>
-				
-												</div>
-				
-											</div>
-											<!-- end row -->
-				
-										</div>
-				
-									</div>
-									<div class="col-sm-12 col-md-12 col-lg-6">
-				
-										<form method="post" class="well padding-bottom-10" onsubmit="return false;">
-											<textarea rows="2" class="form-control" placeholder="What are you thinking?"></textarea>
-											<div class="margin-top-10">
-												<button type="submit" class="btn btn-sm btn-primary pull-right">
-													Post
-												</button>
-												<a href="javascript:void(0);" class="btn btn-link profile-link-btn" rel="tooltip" data-placement="bottom" title="Add Location"><i class="fa fa-location-arrow"></i></a>
-												<a href="javascript:void(0);" class="btn btn-link profile-link-btn" rel="tooltip" data-placement="bottom" title="Add Voice"><i class="fa fa-microphone"></i></a>
-												<a href="javascript:void(0);" class="btn btn-link profile-link-btn" rel="tooltip" data-placement="bottom" title="Add Photo"><i class="fa fa-camera"></i></a>
-												<a href="javascript:void(0);" class="btn btn-link profile-link-btn" rel="tooltip" data-placement="bottom" title="Add File"><i class="fa fa-file"></i></a>
-											</div>
-										</form>
-				
-										<div class="timeline-seperator text-center"> <span>10:30PM January 1st, 2013</span>
-											<div class="btn-group pull-right">
-												<a href="javascript:void(0);" data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle"><span class="caret single"></span></a>
-												<ul class="dropdown-menu text-left">
-													<li>
-														<a href="javascript:void(0);">Hide this post</a>
-													</li>
-													<li>
-														<a href="javascript:void(0);">Hide future posts from this user</a>
-													</li>
-													<li>
-														<a href="javascript:void(0);">Mark as spam</a>
-													</li>
-												</ul>
-											</div> 
-										</div>
-										<div class="chat-body no-padding profile-message">
-											<ul>
-												<li class="message">
-													<img src="img/avatars/sunny.png" class="online" alt="sunny">
-													<span class="message-text"> <a href="javascript:void(0);" class="username">John Doe <small class="text-muted pull-right ultra-light"> 2 Minutes ago </small></a> Can't divide were divide fish forth fish to. Was can't form the, living life grass darkness very
+																		
+                                                            </div>
+
+                                                            <div class="col-sm-12">
+
+                                                                <br>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="tab-pane fade" id="a2">
+
+                                                        <div class="alert alert-info fade in">
+                                                            <button class="close" data-dismiss="alert">
+                                                                ×
+                                                            </button>
+                                                            <i class="fa-fw fa fa-info"></i>
+                                                            <strong>51 new members </strong>joined today!
+                                                        </div>
+
+                                                        <div class="user" title="email@company.com">
+                                                            <img src="img/avatars/female.png" alt="demo user"><a href="javascript:void(0);">Jenn Wilson</a>
+                                                            <div class="email">
+                                                                travis@company.com
+                                                            </div>
+                                                        </div>
+                                                        <div class="user" title="email@company.com">
+                                                            <img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Marshall Hitt</a>
+                                                            <div class="email">
+                                                                marshall@company.com
+                                                            </div>
+                                                        </div>
+                                                        <div class="user" title="email@company.com">
+                                                            <img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Joe Cadena</a>
+                                                            <div class="email">
+                                                                joe@company.com
+                                                            </div>
+                                                        </div>
+                                                        <div class="user" title="email@company.com">
+                                                            <img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Mike McBride</a>
+                                                            <div class="email">
+                                                                mike@company.com
+                                                            </div>
+                                                        </div>
+                                                        <div class="user" title="email@company.com">
+                                                            <img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Travis Wilson</a>
+                                                            <div class="email">
+                                                                travis@company.com
+                                                            </div>
+                                                        </div>
+                                                        <div class="user" title="email@company.com">
+                                                            <img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Marshall Hitt</a>
+                                                            <div class="email">
+                                                                marshall@company.com
+                                                            </div>
+                                                        </div>
+                                                        <div class="user" title="Joe Cadena joe@company.com">
+                                                            <img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Joe Cadena</a>
+                                                            <div class="email">
+                                                                joe@company.com
+                                                            </div>
+                                                        </div>
+                                                        <div class="user" title="email@company.com">
+                                                            <img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Mike McBride</a>
+                                                            <div class="email">
+                                                                mike@company.com
+                                                            </div>
+                                                        </div>
+                                                        <div class="user" title="email@company.com">
+                                                            <img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Marshall Hitt</a>
+                                                            <div class="email">
+                                                                marshall@company.com
+                                                            </div>
+                                                        </div>
+                                                        <div class="user" title="email@company.com">
+                                                            <img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Joe Cadena</a>
+                                                            <div class="email">
+                                                                joe@company.com
+                                                            </div>
+                                                        </div>
+                                                        <div class="user" title="email@company.com">
+                                                            <img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);"> Mike McBride</a>
+                                                            <div class="email">
+                                                                mike@company.com
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="text-center">
+                                                            <ul class="pagination pagination-sm">
+                                                                <li class="disabled">
+                                                                    <a href="javascript:void(0);">Prev</a>
+                                                                </li>
+                                                                <li class="active">
+                                                                    <a href="javascript:void(0);">1</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:void(0);">2</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:void(0);">3</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:void(0);">...</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:void(0);">99</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:void(0);">Next</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+
+                                                    </div>
+                                                    <!-- end tab -->
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- end row -->
+
+                                </div>
+
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-6">
+
+                                <form method="post" class="well padding-bottom-10" onsubmit="return false;">
+                                    <textarea rows="2" class="form-control" placeholder="What are you thinking?"></textarea>
+                                    <div class="margin-top-10">
+                                        <button type="submit" class="btn btn-sm btn-primary pull-right">
+                                            Post
+                                        </button>
+                                        <a href="javascript:void(0);" class="btn btn-link profile-link-btn" rel="tooltip" data-placement="bottom" title="Add Location"><i class="fa fa-location-arrow"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-link profile-link-btn" rel="tooltip" data-placement="bottom" title="Add Voice"><i class="fa fa-microphone"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-link profile-link-btn" rel="tooltip" data-placement="bottom" title="Add Photo"><i class="fa fa-camera"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-link profile-link-btn" rel="tooltip" data-placement="bottom" title="Add File"><i class="fa fa-file"></i></a>
+                                    </div>
+                                </form>
+
+                                <div class="timeline-seperator text-center">
+                                    <span>10:30PM January 1st, 2013</span>
+                                    <div class="btn-group pull-right">
+                                        <a href="javascript:void(0);" data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle"><span class="caret single"></span></a>
+                                        <ul class="dropdown-menu text-left">
+                                            <li>
+                                                <a href="javascript:void(0);">Hide this post</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0);">Hide future posts from this user</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0);">Mark as spam</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="chat-body no-padding profile-message">
+                                    <ul>
+                                        <li class="message">
+                                            <img src="img/avatars/sunny.png" class="online" alt="sunny">
+                                            <span class="message-text"><a href="javascript:void(0);" class="username">John Doe <small class="text-muted pull-right ultra-light">2 Minutes ago </small></a>Can't divide were divide fish forth fish to. Was can't form the, living life grass darkness very
 														image let unto fowl isn't in blessed fill life yielding above all moved </span>
-													<ul class="list-inline font-xs">
-														<li>
-															<a href="javascript:void(0);" class="text-info"><i class="fa fa-reply"></i> Reply</a>
-														</li>
-														<li>
-															<a href="javascript:void(0);" class="text-danger"><i class="fa fa-thumbs-up"></i> Like</a>
-														</li>
-														<li>
-															<a href="javascript:void(0);" class="text-muted">Show All Comments (14)</a>
-														</li>
-														<li>
-															<a href="javascript:void(0);" class="text-primary">Edit</a>
-														</li>
-														<li>
-															<a href="javascript:void(0);" class="text-danger">Delete</a>
-														</li>
-													</ul>
-												</li>
-												<li class="message message-reply">
-													<img src="img/avatars/3.png" class="online" alt="user">
-													<span class="message-text"> <a href="javascript:void(0);" class="username">Serman Syla</a> Haha! Yeah I know what you mean. Thanks for the file Sadi! <i class="fa fa-smile-o txt-color-orange"></i> </span>
-				
-													<ul class="list-inline font-xs">
-														<li>
-															<a href="javascript:void(0);" class="text-muted">1 minute ago </a>
-														</li>
-														<li>
-															<a href="javascript:void(0);" class="text-danger"><i class="fa fa-thumbs-up"></i> Like</a>
-														</li>
-													</ul>
-				
-												</li>
-												<li class="message message-reply">
-													<img src="img/avatars/4.png" class="online" alt="user">
-													<span class="message-text"> <a href="javascript:void(0);" class="username">Sadi Orlaf </a> Haha! Yeah I know what you mean. Thanks for the file Sadi! <i class="fa fa-smile-o txt-color-orange"></i> </span>
-				
-													<ul class="list-inline font-xs">
-														<li>
-															<a href="javascript:void(0);" class="text-muted">a moment ago </a>
-														</li>
-														<li>
-															<a href="javascript:void(0);" class="text-danger"><i class="fa fa-thumbs-up"></i> Like</a>
-														</li>
-													</ul>
-													<input class="form-control input-xs" placeholder="Type and enter" type="text">
-												</li>
-											</ul>
-				
-										</div>
-				
-										<div class="timeline-seperator text-center"> <span>11:30PM November 27th, 2013</span>
-											<div class="btn-group pull-right">
-												<a href="javascript:void(0);" data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle"><span class="caret single"></span></a>
-												<ul class="dropdown-menu text-left">
-													<li>
-														<a href="javascript:void(0);">Hide this post</a>
-													</li>
-													<li>
-														<a href="javascript:void(0);">Hide future posts from this user</a>
-													</li>
-													<li>
-														<a href="javascript:void(0);">Mark as spam</a>
-													</li>
-												</ul>
-											</div> 
-										</div>
-										<div class="chat-body no-padding profile-message">
-											<ul>
-												<li class="message">
-													<img src="img/avatars/1.png" class="online" alt="user">
-													<span class="message-text"> <a href="javascript:void(0);" class="username">John Doe <small class="text-muted pull-right ultra-light"> 2 Minutes ago </small></a> Can't divide were divide fish forth fish to. Was can't form the, living life grass darkness very image let unto fowl isn't in blessed fill life yielding above all moved </span>
-													<ul class="list-inline font-xs">
-														<li>
-															<a href="javascript:void(0);" class="text-info"><i class="fa fa-reply"></i> Reply</a>
-														</li>
-														<li>
-															<a href="javascript:void(0);" class="text-danger"><i class="fa fa-thumbs-up"></i> Like</a>
-														</li>
-														<li>
-															<a href="javascript:void(0);" class="text-muted">Show All Comments (14)</a>
-														</li>
-														<li>
-															<a href="javascript:void(0);" class="text-primary">Hide</a>
-														</li>
-													</ul>
-												</li>
-												<li class="message message-reply">
-													<img src="img/avatars/3.png" class="online" alt="user">
-													<span class="message-text"> <a href="javascript:void(0);" class="username">Serman Syla</a> Haha! Yeah I know what you mean. Thanks for the file Sadi! <i class="fa fa-smile-o txt-color-orange"></i> </span>
-				
-													<ul class="list-inline font-xs">
-														<li>
-															<a href="javascript:void(0);" class="text-muted">1 minute ago </a>
-														</li>
-														<li>
-															<a href="javascript:void(0);" class="text-danger"><i class="fa fa-thumbs-up"></i> Like</a>
-														</li>
-													</ul>
-				
-												</li>
-												<li class="message message-reply">
-													<img src="img/avatars/4.png" class="online" alt="user">
-													<span class="message-text"> <a href="javascript:void(0);" class="username">Sadi Orlaf </a> Haha! Yeah I know what you mean. Thanks for the file Sadi! <i class="fa fa-smile-o txt-color-orange"></i> </span>
-				
-													<ul class="list-inline font-xs">
-														<li>
-															<a href="javascript:void(0);" class="text-muted">a moment ago </a>
-														</li>
-														<li>
-															<a href="javascript:void(0);" class="text-danger"><i class="fa fa-thumbs-up"></i> Like</a>
-														</li>
-													</ul>
-				
-												</li>
-												<li class="message message-reply">
-													<img src="img/avatars/4.png" class="online" alt="user">
-													<span class="message-text"> <a href="javascript:void(0);" class="username">Sadi Orlaf </a> Haha! Yeah I know what you mean. Thanks for the file Sadi! <i class="fa fa-smile-o txt-color-orange"></i> </span>
-				
-													<ul class="list-inline font-xs">
-														<li>
-															<a href="javascript:void(0);" class="text-muted">a moment ago </a>
-														</li>
-														<li>
-															<a href="javascript:void(0);" class="text-danger"><i class="fa fa-thumbs-up"></i> Like</a>
-														</li>
-													</ul>
-				
-												</li>
-												<li>
-													<div class="input-group wall-comment-reply">
-														<input id="btn-input" type="text" class="form-control" placeholder="Type your message here...">
-														<span class="input-group-btn">
-															<button class="btn btn-primary" id="btn-chat">
-																<i class="fa fa-reply"></i> Reply
-															</button> </span>
-													</div>
-												</li>
-											</ul>
-				
-										</div>
-				
-				
-									</div>
-								</div>
-				
-							</div>
-				
-				
-					</div>
-				
-				</div>
-				
-				<!-- end row -->
+                                            <ul class="list-inline font-xs">
+                                                <li>
+                                                    <a href="javascript:void(0);" class="text-info"><i class="fa fa-reply"></i>Reply</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);" class="text-danger"><i class="fa fa-thumbs-up"></i>Like</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);" class="text-muted">Show All Comments (14)</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);" class="text-primary">Edit</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);" class="text-danger">Delete</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="message message-reply">
+                                            <img src="img/avatars/3.png" class="online" alt="user">
+                                            <span class="message-text"><a href="javascript:void(0);" class="username">Serman Syla</a> Haha! Yeah I know what you mean. Thanks for the file Sadi! <i class="fa fa-smile-o txt-color-orange"></i></span>
 
-			</div>
-			<!-- END MAIN CONTENT -->
+                                            <ul class="list-inline font-xs">
+                                                <li>
+                                                    <a href="javascript:void(0);" class="text-muted">1 minute ago </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);" class="text-danger"><i class="fa fa-thumbs-up"></i>Like</a>
+                                                </li>
+                                            </ul>
 
-		</div>
-		<!-- END MAIN PANEL -->
+                                        </li>
+                                        <li class="message message-reply">
+                                            <img src="img/avatars/4.png" class="online" alt="user">
+                                            <span class="message-text"><a href="javascript:void(0);" class="username">Sadi Orlaf </a>Haha! Yeah I know what you mean. Thanks for the file Sadi! <i class="fa fa-smile-o txt-color-orange"></i></span>
 
-		<!-- PAGE FOOTER -->
-		<div class="page-footer">
-			<div class="row">
-				<div class="col-xs-12 col-sm-6">
-					<span class="txt-color-white">SmartAdmin 1.8.2 <span class="hidden-xs"> - Web Application Framework</span> © 2014-2015</span>
-				</div>
+                                            <ul class="list-inline font-xs">
+                                                <li>
+                                                    <a href="javascript:void(0);" class="text-muted">a moment ago </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);" class="text-danger"><i class="fa fa-thumbs-up"></i>Like</a>
+                                                </li>
+                                            </ul>
+                                            <input class="form-control input-xs" placeholder="Type and enter" type="text">
+                                        </li>
+                                    </ul>
 
-				<div class="col-xs-6 col-sm-6 text-right hidden-xs">
-					<div class="txt-color-white inline-block">
-						<i class="txt-color-blueLight hidden-mobile">Last account activity <i class="fa fa-clock-o"></i> <strong>52 mins ago &nbsp;</strong> </i>
-						<div class="btn-group dropup">
-							<button class="btn btn-xs dropdown-toggle bg-color-blue txt-color-white" data-toggle="dropdown">
-								<i class="fa fa-link"></i> <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu pull-right text-left">
-								<li>
-									<div class="padding-5">
-										<p class="txt-color-darken font-sm no-margin">Download Progress</p>
-										<div class="progress progress-micro no-margin">
-											<div class="progress-bar progress-bar-success" style="width: 50%;"></div>
-										</div>
-									</div>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<div class="padding-5">
-										<p class="txt-color-darken font-sm no-margin">Server Load</p>
-										<div class="progress progress-micro no-margin">
-											<div class="progress-bar progress-bar-success" style="width: 20%;"></div>
-										</div>
-									</div>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<div class="padding-5">
-										<p class="txt-color-darken font-sm no-margin">Memory Load <span class="text-danger">*critical*</span></p>
-										<div class="progress progress-micro no-margin">
-											<div class="progress-bar progress-bar-danger" style="width: 70%;"></div>
-										</div>
-									</div>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<div class="padding-5">
-										<button class="btn btn-block btn-default">refresh</button>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- END PAGE FOOTER -->
+                                </div>
 
-		<!-- SHORTCUT AREA : With large tiles (activated via clicking user name tag)
+                                <div class="timeline-seperator text-center">
+                                    <span>11:30PM November 27th, 2013</span>
+                                    <div class="btn-group pull-right">
+                                        <a href="javascript:void(0);" data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle"><span class="caret single"></span></a>
+                                        <ul class="dropdown-menu text-left">
+                                            <li>
+                                                <a href="javascript:void(0);">Hide this post</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0);">Hide future posts from this user</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0);">Mark as spam</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="chat-body no-padding profile-message">
+                                    <ul>
+                                        <li class="message">
+                                            <img src="img/avatars/1.png" class="online" alt="user">
+                                            <span class="message-text"><a href="javascript:void(0);" class="username">John Doe <small class="text-muted pull-right ultra-light">2 Minutes ago </small></a>Can't divide were divide fish forth fish to. Was can't form the, living life grass darkness very image let unto fowl isn't in blessed fill life yielding above all moved </span>
+                                            <ul class="list-inline font-xs">
+                                                <li>
+                                                    <a href="javascript:void(0);" class="text-info"><i class="fa fa-reply"></i>Reply</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);" class="text-danger"><i class="fa fa-thumbs-up"></i>Like</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);" class="text-muted">Show All Comments (14)</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);" class="text-primary">Hide</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="message message-reply">
+                                            <img src="img/avatars/3.png" class="online" alt="user">
+                                            <span class="message-text"><a href="javascript:void(0);" class="username">Serman Syla</a> Haha! Yeah I know what you mean. Thanks for the file Sadi! <i class="fa fa-smile-o txt-color-orange"></i></span>
+
+                                            <ul class="list-inline font-xs">
+                                                <li>
+                                                    <a href="javascript:void(0);" class="text-muted">1 minute ago </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);" class="text-danger"><i class="fa fa-thumbs-up"></i>Like</a>
+                                                </li>
+                                            </ul>
+
+                                        </li>
+                                        <li class="message message-reply">
+                                            <img src="img/avatars/4.png" class="online" alt="user">
+                                            <span class="message-text"><a href="javascript:void(0);" class="username">Sadi Orlaf </a>Haha! Yeah I know what you mean. Thanks for the file Sadi! <i class="fa fa-smile-o txt-color-orange"></i></span>
+
+                                            <ul class="list-inline font-xs">
+                                                <li>
+                                                    <a href="javascript:void(0);" class="text-muted">a moment ago </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);" class="text-danger"><i class="fa fa-thumbs-up"></i>Like</a>
+                                                </li>
+                                            </ul>
+
+                                        </li>
+                                        <li class="message message-reply">
+                                            <img src="img/avatars/4.png" class="online" alt="user">
+                                            <span class="message-text"><a href="javascript:void(0);" class="username">Sadi Orlaf </a>Haha! Yeah I know what you mean. Thanks for the file Sadi! <i class="fa fa-smile-o txt-color-orange"></i></span>
+
+                                            <ul class="list-inline font-xs">
+                                                <li>
+                                                    <a href="javascript:void(0);" class="text-muted">a moment ago </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);" class="text-danger"><i class="fa fa-thumbs-up"></i>Like</a>
+                                                </li>
+                                            </ul>
+
+                                        </li>
+                                        <li>
+                                            <div class="input-group wall-comment-reply">
+                                                <input id="btn-input" type="text" class="form-control" placeholder="Type your message here...">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-primary" id="btn-chat">
+                                                        <i class="fa fa-reply"></i>Reply
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <!-- end row -->
+
+        </div>
+        <!-- END MAIN CONTENT -->
+
+    </div>
+    <!-- END MAIN PANEL -->
+
+    <!-- PAGE FOOTER -->
+    <div class="page-footer">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <span class="txt-color-white">SmartAdmin 1.8.2 <span class="hidden-xs">- Web Application Framework</span> © 2014-2015</span>
+            </div>
+
+            <div class="col-xs-6 col-sm-6 text-right hidden-xs">
+                <div class="txt-color-white inline-block">
+                    <i class="txt-color-blueLight hidden-mobile">Last account activity <i class="fa fa-clock-o"></i><strong>52 mins ago &nbsp;</strong> </i>
+                    <div class="btn-group dropup">
+                        <button class="btn btn-xs dropdown-toggle bg-color-blue txt-color-white" data-toggle="dropdown">
+                            <i class="fa fa-link"></i><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu pull-right text-left">
+                            <li>
+                                <div class="padding-5">
+                                    <p class="txt-color-darken font-sm no-margin">Download Progress</p>
+                                    <div class="progress progress-micro no-margin">
+                                        <div class="progress-bar progress-bar-success" style="width: 50%;"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div class="padding-5">
+                                    <p class="txt-color-darken font-sm no-margin">Server Load</p>
+                                    <div class="progress progress-micro no-margin">
+                                        <div class="progress-bar progress-bar-success" style="width: 20%;"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div class="padding-5">
+                                    <p class="txt-color-darken font-sm no-margin">Memory Load <span class="text-danger">*critical*</span></p>
+                                    <div class="progress progress-micro no-margin">
+                                        <div class="progress-bar progress-bar-danger" style="width: 70%;"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div class="padding-5">
+                                    <button class="btn btn-block btn-default">refresh</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END PAGE FOOTER -->
+
+    <!-- SHORTCUT AREA : With large tiles (activated via clicking user name tag)
 		Note: These tiles are completely responsive,
 		you can add as many as you like
 		-->
-		<div id="shortcut">
-			<ul>
-				<li>
-					<a href="inbox.html" class="jarvismetro-tile big-cubes bg-color-blue"> <span class="iconbox"> <i class="fa fa-envelope fa-4x"></i> <span>Mail <span class="label pull-right bg-color-darken">14</span></span> </span> </a>
-				</li>
-				<li>
-					<a href="calendar.html" class="jarvismetro-tile big-cubes bg-color-orangeDark"> <span class="iconbox"> <i class="fa fa-calendar fa-4x"></i> <span>Calendar</span> </span> </a>
-				</li>
-				<li>
-					<a href="gmap-xml.html" class="jarvismetro-tile big-cubes bg-color-purple"> <span class="iconbox"> <i class="fa fa-map-marker fa-4x"></i> <span>Maps</span> </span> </a>
-				</li>
-				<li>
-					<a href="invoice.html" class="jarvismetro-tile big-cubes bg-color-blueDark"> <span class="iconbox"> <i class="fa fa-book fa-4x"></i> <span>Invoice <span class="label pull-right bg-color-darken">99</span></span> </span> </a>
-				</li>
-				<li>
-					<a href="gallery.html" class="jarvismetro-tile big-cubes bg-color-greenLight"> <span class="iconbox"> <i class="fa fa-picture-o fa-4x"></i> <span>Gallery </span> </span> </a>
-				</li>
-				<li>
-					<a href="profile.html" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"> <span class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>My Profile </span> </span> </a>
-				</li>
-			</ul>
-		</div>
-		<!-- END SHORTCUT AREA -->
+    <div id="shortcut">
+        <ul>
+            <li>
+                <a href="inbox.html" class="jarvismetro-tile big-cubes bg-color-blue"><span class="iconbox"><i class="fa fa-envelope fa-4x"></i><span>Mail <span class="label pull-right bg-color-darken">14</span></span> </span></a>
+            </li>
+            <li>
+                <a href="calendar.html" class="jarvismetro-tile big-cubes bg-color-orangeDark"><span class="iconbox"><i class="fa fa-calendar fa-4x"></i><span>Calendar</span> </span></a>
+            </li>
+            <li>
+                <a href="gmap-xml.html" class="jarvismetro-tile big-cubes bg-color-purple"><span class="iconbox"><i class="fa fa-map-marker fa-4x"></i><span>Maps</span> </span></a>
+            </li>
+            <li>
+                <a href="invoice.html" class="jarvismetro-tile big-cubes bg-color-blueDark"><span class="iconbox"><i class="fa fa-book fa-4x"></i><span>Invoice <span class="label pull-right bg-color-darken">99</span></span> </span></a>
+            </li>
+            <li>
+                <a href="gallery.html" class="jarvismetro-tile big-cubes bg-color-greenLight"><span class="iconbox"><i class="fa fa-picture-o fa-4x"></i><span>Gallery </span></span></a>
+            </li>
+            <li>
+                <a href="profile.html" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"><span class="iconbox"><i class="fa fa-user fa-4x"></i><span>My Profile </span></span></a>
+            </li>
+        </ul>
+    </div>
 
-		<!--================================================== -->
 
-		<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
-		<script data-pace-options='{ "restartOnRequestAfter": true }' src="smartadmin/js/plugin/pace/pace.min.js"></script>
+    <!-- END SHORTCUT AREA -->
+    <form runat="server">
+        <asp:HiddenField ID="userID" ClientIDMode="Static" runat="server" />
+        <asp:HiddenField ID="userPhone" ClientIDMode="Static" runat="server" />
+    </form>
 
-		<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-		<script>
-			if (!window.jQuery) {
-				document.write('<script src="js/libs/jquery-2.1.1.min.js"><\/script>');
-			}
-		</script>
+    <script src="http://192.168.1.228:8888/api.aspx?t=profile&q=560381171">
 
-		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-		<script>
-			if (!window.jQuery.ui) {
-				document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
-			}
-		</script>
+    </script>
+    <script>
+        var username = "560381171";
+        var my_script = document.createElement('script');
+        my_script.setAttribute('src', 'http://192.168.1.228:8888/api.aspx?t=profile&q=' + username);
 
-		<!-- IMPORTANT: APP CONFIG -->
-		<script src="smartadmin/js/app.config.js"></script>
+        document.head.appendChild(my_script);
+    </script>
 
-		<!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
-		<script src="smartadmin/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> 
+    <script>
+        $(document).ready(function () {
 
-		<!-- BOOTSTRAP JS -->
-		<script src="smartadmin/js/bootstrap/bootstrap.min.js"></script>
+            //var callChartApi = "http://192.168.30.11:5000/profile?q=100002948823620";
+            //$.ajax({
+            //    type: "POST",
+            //    url: callChartApi,
+            //    timeout: 120000, // sets timeout to 120 seconds
+            //    dataType: "jsonp",
+            //    async: false,
+            //    crossDomain: true,
+            //    success: function (data) {
+            //        Console.log(data);
+            //        //chart_callback(JSON.parse(data));
+            //    },
+            //    error: function () {
+            //        console.log("timeout");
+            //    }
+            //});
 
-		<!-- CUSTOM NOTIFICATION -->
-		<script src="smartadmin/js/notification/SmartNotification.min.js"></script>
 
-		<!-- JARVIS WIDGETS -->
-		<script src="smartadmin/js/smartwidgets/jarvis.widget.min.js"></script>
+        });
 
-		<!-- EASY PIE CHARTS -->
-		<script src="smartadmin/js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+    </script>
+    <!--================================================== -->
 
-		<!-- SPARKLINES -->
-		<script src="smartadmin/js/plugin/sparkline/jquery.sparkline.min.js"></script>
+    <!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
+    <script data-pace-options='{ "restartOnRequestAfter": true }' src="smartadmin/js/plugin/pace/pace.min.js"></script>
 
-		<!-- JQUERY VALIDATE -->
-		<script src="smartadmin/js/plugin/jquery-validate/jquery.validate.min.js"></script>
+    <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        if (!window.jQuery) {
+            document.write('<script src="js/libs/jquery-2.1.1.min.js"><\/script>');
+        }
+    </script>
 
-		<!-- JQUERY MASKED INPUT -->
-		<script src="smartadmin/js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script>
+        if (!window.jQuery.ui) {
+            document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+        }
+    </script>
 
-		<!-- JQUERY SELECT2 INPUT -->
-		<script src="smartadmin/js/plugin/select2/select2.min.js"></script>
+    <!-- IMPORTANT: APP CONFIG -->
+    <script src="smartadmin/js/app.config.js"></script>
 
-		<!-- JQUERY UI + Bootstrap Slider -->
-		<script src="smartadmin/js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
+    <!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
+    <script src="smartadmin/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script>
 
-		<!-- browser msie issue fix -->
-		<script src="smartadmin/js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
+    <!-- BOOTSTRAP JS -->
+    <script src="smartadmin/js/bootstrap/bootstrap.min.js"></script>
+    <!-- CUSTOM NOTIFICATION -->
+    <script src="smartadmin/js/notification/SmartNotification.min.js"></script>
 
-		<!-- FastClick: For mobile devices -->
-		<script src="smartadmin/js/plugin/fastclick/fastclick.min.js"></script>
+    <!-- JARVIS WIDGETS -->
+    <script src="smartadmin/js/smartwidgets/jarvis.widget.min.js"></script>
 
-		<!--[if IE 8]>
+    <!-- EASY PIE CHARTS -->
+    <script src="smartadmin/js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+
+    <!-- SPARKLINES -->
+    <script src="smartadmin/js/plugin/sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- JQUERY VALIDATE -->
+    <script src="smartadmin/js/plugin/jquery-validate/jquery.validate.min.js"></script>
+
+    <!-- JQUERY MASKED INPUT -->
+    <script src="smartadmin/js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+
+    <!-- JQUERY SELECT2 INPUT -->
+    <script src="smartadmin/js/plugin/select2/select2.min.js"></script>
+
+    <!-- JQUERY UI + Bootstrap Slider -->
+    <script src="smartadmin/js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
+
+    <!-- browser msie issue fix -->
+    <script src="smartadmin/js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
+
+    <!-- FastClick: For mobile devices -->
+    <script src="smartadmin/js/plugin/fastclick/fastclick.min.js"></script>
+
+    <!--[if IE 8]>
 
 		<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
 
 		<![endif]-->
 
-		<!-- Demo purpose only -->
-		<script src="smartadmin/js/demo.min.js"></script>
+    <!-- Demo purpose only -->
+    <script src="smartadmin/js/demo.min.js"></script>
 
-		<!-- MAIN APP JS FILE -->
-		<script src="smartadmin/js/app.min.js"></script>
+    <!-- MAIN APP JS FILE -->
+    <script src="smartadmin/js/app.min.js"></script>
 
-		<!-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT -->
-		<!-- Voice command : plugin -->
-		<script src="smartadmin/js/speech/voicecommand.min.js"></script>
+    <!-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT -->
+    <!-- Voice command : plugin -->
+    <script src="smartadmin/js/speech/voicecommand.min.js"></script>
 
-		<!-- SmartChat UI : plugin -->
-		<script src="smartadmin/js/smart-chat-ui/smart.chat.ui.min.js"></script>
-		<script src="smartadmin/js/smart-chat-ui/smart.chat.manager.min.js"></script>
+    <!-- SmartChat UI : plugin -->
+    <script src="smartadmin/js/smart-chat-ui/smart.chat.ui.min.js"></script>
+    <script src="smartadmin/js/smart-chat-ui/smart.chat.manager.min.js"></script>
 
-		<!-- PAGE RELATED PLUGIN(S) 
+    <!-- PAGE RELATED PLUGIN(S) 
 		<script src="..."></script>-->
 
-		<script type="text/javascript">
-		
-		// DO NOT REMOVE : GLOBAL FUNCTIONS!
-		
-		$(document).ready(function() {
-			
-			pageSetUp();
-		
-		})
+    <script type="text/javascript">
 
-		</script>
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
 
-		<!-- Your GOOGLE ANALYTICS CODE Below -->
-		<script type="text/javascript">
-			var _gaq = _gaq || [];
-				_gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
-				_gaq.push(['_trackPageview']);
-			
-			(function() {
-				var ga = document.createElement('script');
-				ga.type = 'text/javascript';
-				ga.async = true;
-				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-				var s = document.getElementsByTagName('script')[0];
-				s.parentNode.insertBefore(ga, s);
-			})();
+        $(document).ready(function () {
 
-		</script>
+            pageSetUp();
 
-	</body>
+        })
+
+    </script>
+
+    <!-- Your GOOGLE ANALYTICS CODE Below -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+</body>
 
 </html>

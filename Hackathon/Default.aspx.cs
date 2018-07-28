@@ -15,7 +15,7 @@ namespace Hackathon
         }
         protected void GoTo(object sender, System.EventArgs e)
         {
-            Response.Redirect("profile.aspx");
+            Response.Redirect("/Profile.aspx?phone="+ top_name.Value);
         }
     }
 }

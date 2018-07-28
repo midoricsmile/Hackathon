@@ -156,7 +156,7 @@
                                             <div class="inputt input_change">
                                                 <span class="message_icon">
                                                     <img src="./Vay tín chấp tiêu dùng VPBank - NH Việt Nam Thịnh Vượng_files/icon_name.png"></span>
-                                                <input type="text" required="" placeholder="Họ và tên" id="top-name" class="form-control name" name="name">
+                                                <input type="text" runat="server" required="" placeholder="Số điện thoại" ID="top_name" class="form-control name" name="name">
                                             </div>
                                         </div>
 
@@ -164,8 +164,7 @@
 
                                         <div class="col-md-12 col text-center">
                                             <div class="sunmite_button">
-<%--                                                <asp:Button runat="server"  onclick="test2();" Text="Nhận khoản vay ngay" OnClientClick="goTo()" />--%>
-                                                    <asp:Button runat="server" OnClick="GoTo" ToolTip="Nhận khoản vay ngay" title="Login" value="Login" ID="login_button" Text="Nhận khoản vay ngay" />
+                                                    <asp:Button runat="server" OnClick="GoTo"  ToolTip="Kiểm tra thông tin" title="Login" value="Login" ID="login_button" Text="Nhận khoản vay ngay" />
                                                 
                                             </div>
                                         </div>
@@ -297,130 +296,7 @@
         </div>
         </div>
 
-        <script>
-            function toDataEntry() {
-                var name = $('#top-name').val();
-                var phone = $('#top-phone').val();
-                var loanAmout = $("#so_tien_vay").val() * 1000000;
-                var tenor = $("#ky_han_vay").val();
-                var identify = $('#top-cmnd').val();
-                var place = $('#top-tinh-thanh').val();
-                if (name != "" && phone != "") {
-                    var url = "/LOSWebDE/get_customer.vpb?name=" + name + "&phone=" + phone + "&iden=" + identify + "&pla=" + place;
-                    $.ajax({
-                        type: "GET",
-                        url: url,
-                        data: "",
-                        success: function (response) {
-
-                        },
-                        error: function () {
-                            $(this).html("Error!");
-                        }
-                    });
-                }
-                var urlApply = "/LOSWebDE/applyloan.vpb?name=" + name + "&phone=" + phone + "&iden=" + identify + "&pla=" + place;
-                location.href = urlApply;
-
-            }
-
-            function toDataEntry2() {
-                var name = $('#bot-name').val();
-                var phone = $('#bot-phone').val();
-                var loanAmout = $("#so_tien_vay").val() * 1000000;
-                var tenor = $("#ky_han_vay").val();
-                var identify = $('#top-cmnd2').val();
-                var place = $('#top-tinh-thanh2').val();
-                if (name != "" && phone != "") {
-                    var url = "/LOSWebDE/add_customer.vpb?name=" + name + "&phone=" + phone + "&iden=" + identify + "&pla=" + place;
-                    $.ajax({
-
-                        type: "GET",
-                        url: url,
-                        data: "",
-                        success: function (response) {
-                            var obj = JSON.parse(response)
-                            var code = obj.code;
-                            if (code == "OK") {
-
-                            } else {
-
-                            }
-
-                        },
-                        error: function () {
-                            $(this).html("Error!");
-                        }
-                    });
-                }
-                var urlApply = "/LOSWebDE/applyloan.vpb?name=" + name + "&phone=" + phone + "&iden=" + identify + "&pla=" + place;
-                location.href = urlApply;
-
-            }
-
-            $("#so_tien_vay").slider({
-                formatter: function (value) {
-                    return value + " Triệu";
-                },
-                tooltip: 'always',
-                min: 30,
-                max: 500,
-                scale: 'logarithmic',
-                step: 5,
-                ticks: [30, 500],
-                ticks_labels: ['30 triệu', '500 triệu']
-            });
-            $("#ky_han_vay").slider({
-                formatter: function (value) {
-                    return value + " Tháng";
-                },
-                tooltip: 'always',
-                min: 12,
-                max: 60,
-                step: 1,
-                ticks: [12, 60],
-                ticks_labels: ['12 tháng', '60 tháng']
-            });
-            $("#so_tien_vay").on("slide", function (slideEvt) {
-
-                Calcul(slideEvt.value, $("#ky_han_vay").val());
-            });
-            $("#ky_han_vay").on("slide", function (slideEvt) {
-
-                Calcul($("#so_tien_vay").val(), slideEvt.value);
-            });
-
-            function Calcul(so_tien_vay, ky_han_vay) {
-                so_tien_vay = so_tien_vay * 1000000;
-                var sotien = 0;
-                var rate = 27 / 100 / 12;
-                so_tien = -pmt(rate, ky_han_vay, so_tien_vay, 0, 0);
-                so_tien = Math.round(so_tien);
-                $("#so_tien_hang_thang").text(numberWithCommas(so_tien));
-            }
-
-            function numberWithCommas(x) {
-                x = x.toString();
-                var pattern = /(-?\d+)(\d{3})/;
-                while (pattern.test(x))
-                    x = x.replace(pattern, "$1.$2");
-                return x;
-            }
-
-            function pmt(rate_per_period, number_of_payments, present_value, future_value, type) {
-                if (rate_per_period != 0.0) {
-                    // Interest rate exists
-                    var q = Math.pow(1 + rate_per_period, number_of_payments);
-                    return -(rate_per_period * (future_value + (q * present_value))) / ((-1 + q) * (1 + rate_per_period * (type)));
-
-                } else if (number_of_payments != 0.0) {
-                    // No interest rate, but number of payments exists
-                    return -(future_value + present_value) / number_of_payments;
-                }
-
-                return 0;
-            }
-        </script>
+        
 
         <div style="display: none; visibility: hidden;">
             <script>$(document).ready(function () { "" != Cookies.get("current_name") && void 0 != Cookies.get("current_name") && ($("#customerName").val(Cookies.get("current_name")), $("#phoneNumber").val(Cookies.get("current_phone"))) });</script>
@@ -539,22 +415,22 @@
                 }
             </style>
             <script type="text/javascript">
-	function test(){
-                             var id = $('#top-name').val();
+                function userPhone(){
+                             var phoneNumber = $('#top-name').val();
                              document.getElementById("content_rq").innerHTML = "whatever";
-                             var url = "http://192.168.1.228:8888/api.aspx?t=network&q=" + id;
+                             var url = "Profile.aspx/GetData";
 
 
                              $.ajax({
-                                 type: "GET",
+                                 type: "POST",
                                  url: url,
-                                 dataType: "jsonp",
+                                 dataType: "json",
+                                 data: "userPhone="+phoneNumber, //"userPhone="+phoneNumber{'userPhone': phoneNumber}
                                  cache: false,
                                  crossDomain: true,
+                                 contenType: "application/json; charset=utf-8",
                                  success: function (response) {
-                                     console.log(response);
-                                     document.getElementById("content_rq").innerHTML = response;
-                                     alert(response);
+                                     
                                  },
                                  error: function () {
                                      $(this).html("Error!");
@@ -571,7 +447,8 @@
                                      alert(data);
                                  });
                          }
-            </script >
+            </script>
+            
     </body>
 
     </html>

@@ -13,6 +13,15 @@ namespace Hackathon {
     public partial class _Default {
         
         /// <summary>
+        /// top_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText top_name;
+        
+        /// <summary>
         /// login_button control.
         /// </summary>
         /// <remarks>
