@@ -53,9 +53,52 @@
     <script>
 
         function profile(data) {
-            alert(data);
+            var id = data['hits']['hits'][0]['_id'];
+            var name = data['hits']['hits'][0]['_source']['author_name']
+            var follow = data['hits']['hits'][0]['_source']['follower_count'];
+            var connect = data['hits']['hits'][0]['_source']['friend_count'];
+            var email = data['hits']['hits'][0]['_source']['email'] == null ? "null" : data['hits']['hits'][0]['_source']['email'];
+            var hometown = data['hits']['hits'][0]['_source']['hometown'] == null ? "null" : data['hits']['hits'][0]['_source']['hometown'];
+            var birthYear = data['hits']['hits'][0]['_source']['birthYear'] == null ? "null" : data['hits']['hits'][0]['_source']['birthYear'];
+            var quotes = data['hits']['hits'][0]['_source']['fb_data']['quotes'] == null ? "null" : data['hits']['hits'][0]['_source']['fb_data']['quotes'];
+            $('#userID').val(id);
+            $('#userFollow').text(follow);
+            $('#phone').text($("#userPhone").val());
+            $('#userName').text(name);
+            $('#userConnect').text(connect);
+            $('#userEmail').text(email);
+            $('#userHomeTown').text(hometown);
+            $('#userBirthDay').text(birthYear);
+            $('#userQuotes').text(quotes);
+            $("#userAvar").attr("src", "http://graph.facebook.com/" + id + "/picture?type=large");
+            var idd = $("#userID").val();
+            console.log(id);
+            $.ajax({
+                type: "POST",
+                url: "http://192.168.26.136:5000/friends?q=" + idd,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    var test = JSON.parse(data)
+                    getProfileFr(test);
+                }
+            });
+            console.log(data);
         }
+        function getProfileFr(data) {
+            for (index = 0; index < data.length; ++index) {
+                $.ajax({
+                    type: "POST",
+                    url: "http://192.168.26.136:5000/profile?q=" + data[index],
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+            }
 
+        }
     </script>
     <!-- Startup image for web apps -->
     <link rel="apple-touch-startup-image" href="smartadmin/img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
@@ -948,8 +991,7 @@
                 <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
                     <h1 class="page-title txt-color-blueDark">
                         <!-- PAGE HEADER -->
-                        <i class="fa-fw fa fa-puzzle-piece"></i>App Views <span>>
-							Profile </span></h1>
+                        <i class="fa-fw fa fa-puzzle-piece"></i>Profile </h1>
                 </div>
                 <!-- end col -->
 
@@ -1000,7 +1042,7 @@
 
                                     <div class="row">
 
-                                        <div class="col-sm-12">
+                                        <%--<div class="col-sm-12">
                                             <div id="myCarousel" class="carousel fade profile-carousel">
                                                 <div class="air air-bottom-right padding-10">
                                                     <a href="javascript:void(0);" class="btn txt-color-white bg-color-teal btn-sm"><i class="fa fa-check"></i>Follow</a>&nbsp; <a href="javascript:void(0);" class="btn txt-color-white bg-color-pinkDark btn-sm"><i class="fa fa-link"></i>Connect</a>
@@ -1028,66 +1070,65 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>--%>
 
                                         <div class="col-sm-12">
 
                                             <div class="row">
 
                                                 <div class="col-sm-3 profile-pic">
-                                                    <img src="img/avatars/sunny-big.png" alt="demo user">
+                                                    <img src="" id="userAvar" alt="demo user">
                                                     <div class="padding-10">
-                                                        <h4 class="font-md"><strong>1,543</strong>
+                                                        <h4 class="font-md"><strong><span id="userFollow"></span></strong>
                                                             <br>
                                                             <small>Followers</small></h4>
                                                         <br>
-                                                        <h4 class="font-md"><strong>419</strong>
+                                                        <h4 class="font-md"><strong><span id="userConnect"></span></strong>
                                                             <br>
                                                             <small>Connections</small></h4>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <h1>John <span class="semi-bold">Doe</span>
+                                                    <h1><span class="semi-bold"><span id="userName"></span></span>
                                                         <br>
-                                                        <small>CEO, SmartAdmin</small></h1>
-
+                                                        <%--<small>CEO, SmartAdmin</small></h1>--%>
+                                                    </h1>
                                                     <ul class="list-unstyled">
                                                         <li>
                                                             <p class="text-muted">
-                                                                <i class="fa fa-phone"></i>&nbsp;&nbsp;(<span class="txt-color-darken">313</span>) <span class="txt-color-darken">464</span> - <span class="txt-color-darken">6473</span>
+                                                                <i class="fa fa-phone"></i>&nbsp;&nbsp;(<span class="txt-color-darken">+84</span>) <span class="txt-color-darken"><span id="phone"></span></span>
                                                             </p>
                                                         </li>
                                                         <li>
                                                             <p class="text-muted">
-                                                                <i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:simmons@smartadmin">ceo@smartadmin.com</a>
+                                                                <i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href=""><span id="userEmail"></span></a>
                                                             </p>
                                                         </li>
                                                         <li>
                                                             <p class="text-muted">
-                                                                <i class="fa fa-skype"></i>&nbsp;&nbsp;<span class="txt-color-darken">john12</span>
+                                                                <i class="fa fa-home"></i>&nbsp;&nbsp;<span class="txt-color-darken"><span id="userHomeTown"></span></span>
                                                             </p>
                                                         </li>
                                                         <li>
                                                             <p class="text-muted">
-                                                                <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span class="txt-color-darken">Free after <a href="javascript:void(0);" rel="tooltip" title="" data-placement="top" data-original-title="Create an Appointment">4:30 PM</a></span>
+                                                                <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span class="txt-color-darken"><span id="userBirthDay"></span></span>
                                                             </p>
                                                         </li>
                                                     </ul>
                                                     <br>
                                                     <p class="font-md">
-                                                        <i>A little about me...</i>
+                                                        <i>Quotes</i>
                                                     </p>
                                                     <p>
-                                                        Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio
-																cumque nihil impedit quo minus id quod maxime placeat facere
-				
+                                                        <span id="userQuotes"></span>
+
                                                     </p>
                                                     <br>
                                                     <a href="javascript:void(0);" class="btn btn-default btn-xs"><i class="fa fa-envelope-o"></i>Send Message</a>
                                                     <br>
                                                     <br>
                                                 </div>
-                                                <div class="col-sm-3">
+                                                <%--<div class="col-sm-3">
                                                     <h1><small>Connections</small></h1>
                                                     <ul class="list-inline friends-list">
                                                         <li>
@@ -1126,8 +1167,7 @@
                                                         </li>
                                                     </ul>
 
-                                                </div>
-
+                                                </div>--%>
                                             </div>
 
                                         </div>
@@ -1610,9 +1650,7 @@
         <asp:HiddenField ID="userPhone" ClientIDMode="Static" runat="server" />
     </form>
 
-    <script src="http://192.168.1.228:8888/api.aspx?t=profile&q=560381171">
-
-    </script>
+    <script></script>
     <script>
         var username = "560381171";
         var my_script = document.createElement('script');
@@ -1620,7 +1658,11 @@
 
         document.head.appendChild(my_script);
     </script>
+    <script>
+        $(document).ready(function () {
 
+        });
+    </script>
     <script>
         $(document).ready(function () {
 

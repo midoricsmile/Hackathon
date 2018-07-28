@@ -18,7 +18,7 @@ namespace Hackathon
             var phone = Request.QueryString["phone"];
             testt.Text = phone;
             userPhone.Value = phone;
-            userID.Value = "1";
+            
             
         }
         
