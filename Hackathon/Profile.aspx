@@ -80,27 +80,69 @@
                 processData: false,
                 contentType: false,
                 success: function (data) {
-                    var test = JSON.parse(data)
-                    getProfileFr(test);
+                    getProfileFr(JSON.parse(data));
                 }
             });
-            console.log(data);
-        }
+            
+        };
         function getProfileFr(data) {
-            //for (index = 0; index < data.length; ++index) {
-            //    $.ajax({
-            //        type: "POST",
-            //        url: "http://localhost:5000/profile?q=" + data[index],
-            //        processData: false,
-            //        contentType: false,
-            //        success: function (data) {
-            //            console.log(data);
-            //        }
-            //    });
-            //}
-            return true
+            datafr = data['friends'];
+            console.log(datafr.length);
+            for (var i = 0; i < datafr.length; i++) {
+                var influnce = datafr[i]['_source']['influence_score'];
+                if (influnce > 6) color = 'score';
+                else color = 'danger';
+                console.log(color);
+                console.log(influnce);
+                itemHtml = "";
+                itemHtml += "<section class='mention mention-box mention-site-5'>"
+                itemHtml += "	<div class='header'>"
 
-        }
+                itemHtml += "		<div class='avatar'>"
+                itemHtml += "			<a target='_blank' href='http://facebook.com/" + datafr[i]['_id'] + "'><img src='http://graph.facebook.com/" +  datafr[i]['_id'] + "/picture'></a>"
+                itemHtml += "		</div>"
+
+                itemHtml += "	    <div class='author'>"
+                itemHtml += "		    <div class='mention-title-box'>"
+                itemHtml += "			    <a target='_blank' href='http://facebook.com/" + datafr[i]['_id'] + "'>" + datafr[i]['_source']["author_name"] + "</a>"
+                itemHtml += "		    </div>"
+                itemHtml += "           <div class='influence-score'>"
+                itemHtml += "               <button onClick='#'  class='btn btn-lg btn-circle btn-" + color + "'>" + influnce + "</button> "
+                itemHtml += "           </div>"
+                itemHtml += "       </div>"
+
+                itemHtml += "	    <div class='counter'>"
+                itemHtml += "            <span> <strong>" + datafr[i]['_source']['friend_count'] + "</strong>  Friends </span>"              
+                itemHtml += "            <span> <strong>" + datafr[i]['_source']['follower_count'] + "</strong>  Followers </span>"
+                itemHtml += "       </div>"      
+
+                itemHtml += "	</div>"
+                itemHtml += "   <div class='description'>";
+                if (datafr[i]['_source'].hasOwnProperty('fb_data')){
+                    if (datafr[i]['_source']['fb_data'].hasOwnProperty('work')) {
+                        var works = datafr[i]['_source']['fb_data']['work']
+                        for (var j = 0; j < works.length; j++) {
+                            var employer = works[j]['employer']['name'];
+                            var position = "";
+                            var employerid = works[j]['employer']['id'];
+                            if (works[j].hasOwnProperty('position'))
+                                position = works[j]['position']['name'];
+
+                            if (position)
+                                itemHtml += "<p>" + position + ' tại ' + "<a href='http://facebook.com/" + employerid + "'>" + employer + "</a></p>";
+                            else
+                                itemHtml += "<p> Làm việc tại <a href='http://facebook.com/" + employerid + "'>" + employer + "</a></p>";
+
+                        }
+                    }
+                }
+                itemHtml += "   </div"
+                $('#a1').prepend(itemHtml);
+            }
+                    
+        };
+            
+        
         
     </script>
     <script>        
@@ -160,6 +202,7 @@
 
             .menu ul {
                 text-align: right;
+               
             }
 
                 .menu ul li a {
@@ -209,7 +252,7 @@
                     </div>
                     <!--end logo area-->
                     <!--nav area-->
-                    <div class="col-md-10 col-sm-10 col-xs-8">
+                    <div class="col-md-10 col-sm-10 col-xs-8 ">
                         <div class="menu">
                             <ul class="navid ">
                                 <li class="current"><a href="https://vaytinchap.vpbank.com.vn/LOSWebDE/?utm_source=vpbank.com.vn&amp;utm_medium=referral&amp;utm_campaign=UPL.Generic&amp;utm_content=productpage#vay-tin-chap">Vay nhanh</a></li>
@@ -269,26 +312,7 @@
                 <!-- col -->
                 <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
                     <!-- sparks -->
-                    <ul id="sparks">
-                        <li class="sparks-info">
-                            <h5>My Income <span class="txt-color-blue">$47,171</span></h5>
-                            <div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
-                                1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
-                            </div>
-                        </li>
-                        <li class="sparks-info">
-                            <h5>Site Traffic <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
-                            <div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
-                                110,150,300,130,400,240,220,310,220,300, 270, 210
-                            </div>
-                        </li>
-                        <li class="sparks-info">
-                            <h5>Site Orders <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span></h5>
-                            <div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
-                                110,150,300,130,400,240,220,310,220,300, 270, 210
-                            </div>
-                        </li>
-                    </ul>
+                    
                     <!-- end sparks -->
                 </div>
                 <!-- end col -->
@@ -385,170 +409,19 @@
 
                                                 <ul class="nav nav-tabs tabs-pull-right">
                                                     <li class="active">
-                                                        <a href="#a1" data-toggle="tab">Recent Articles</a>
+                                                        <a href="#a1" data-toggle="tab">Influence Score</a>
                                                     </li>
-                                                    <li>
-                                                        <a href="#a2" data-toggle="tab">New Members</a>
-                                                    </li>
+            
                                                     <li class="pull-left">
-                                                        <span class="margin-top-10 display-inline"><i class="fa fa-rss text-success"></i>Activity</span>
+                                                        <span class="margin-top-10 display-inline"><i class="fa fa-rss text-success"></i>Top Friends</span>
                                                     </li>
                                                 </ul>
 
                                                 <div class="tab-content padding-top-10">
                                                     <div class="tab-pane fade in active" id="a1">
 
-                                                        <div class="row">
-
-                                                            <div class="col-xs-2 col-sm-1">
-                                                                <time datetime="2014-09-20" class="icon">
-                                                                    <strong>Jan</strong>
-                                                                    <span>10</span>
-                                                                </time>
-                                                            </div>
-
-                                                            <div class="col-xs-10 col-sm-11">
-                                                                <h6 class="no-margin"><a href="javascript:void(0);">Allice in Wonderland</a></h6>
-                                                                <p>
-                                                                    Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi Nam eget dui.
-																			Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero,
-																			sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel.
-                                                                </p>
-                                                            </div>
-
-                                                            <div class="col-sm-12">
-
-                                                                <hr>
-                                                            </div>
-
-                                                            <div class="col-xs-2 col-sm-1">
-                                                                <time datetime="2014-09-20" class="icon">
-                                                                    <strong>Jan</strong>
-                                                                    <span>10</span>
-                                                                </time>
-                                                            </div>
-
-                                                            <div class="col-xs-10 col-sm-11">
-                                                                <h6 class="no-margin"><a href="javascript:void(0);">World Report</a></h6>
-                                                                <asp:Literal ID="testt" runat="server"></asp:Literal>
-                                                                Morning our be dry. Life also third land after first beginning to evening cattle created let subdue you'll winged don't Face firmament.
-																			You winged you're was Fruit divided signs lights i living cattle yielding over light life life sea, so deep.
-																			Abundantly given years bring were after. Greater you're meat beast creeping behold he unto She'd doesn't. Replenish brought kind gathering Meat.
-																		
-                                                            </div>
-
-                                                            <div class="col-sm-12">
-
-                                                                <br>
-                                                            </div>
-
-                                                        </div>
-
                                                     </div>
-                                                    <div class="tab-pane fade" id="a2">
-
-                                                        <div class="alert alert-info fade in">
-                                                            <button class="close" data-dismiss="alert">
-                                                                ×
-                                                            </button>
-                                                            <i class="fa-fw fa fa-info"></i>
-                                                            <strong>51 new members </strong>joined today!
-                                                        </div>
-
-                                                        <div class="user" title="email@company.com">
-                                                            <img src="img/avatars/female.png" alt="demo user"><a href="javascript:void(0);">Jenn Wilson</a>
-                                                            <div class="email">
-                                                                travis@company.com
-                                                            </div>
-                                                        </div>
-                                                        <div class="user" title="email@company.com">
-                                                            <img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Marshall Hitt</a>
-                                                            <div class="email">
-                                                                marshall@company.com
-                                                            </div>
-                                                        </div>
-                                                        <div class="user" title="email@company.com">
-                                                            <img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Joe Cadena</a>
-                                                            <div class="email">
-                                                                joe@company.com
-                                                            </div>
-                                                        </div>
-                                                        <div class="user" title="email@company.com">
-                                                            <img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Mike McBride</a>
-                                                            <div class="email">
-                                                                mike@company.com
-                                                            </div>
-                                                        </div>
-                                                        <div class="user" title="email@company.com">
-                                                            <img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Travis Wilson</a>
-                                                            <div class="email">
-                                                                travis@company.com
-                                                            </div>
-                                                        </div>
-                                                        <div class="user" title="email@company.com">
-                                                            <img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Marshall Hitt</a>
-                                                            <div class="email">
-                                                                marshall@company.com
-                                                            </div>
-                                                        </div>
-                                                        <div class="user" title="Joe Cadena joe@company.com">
-                                                            <img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Joe Cadena</a>
-                                                            <div class="email">
-                                                                joe@company.com
-                                                            </div>
-                                                        </div>
-                                                        <div class="user" title="email@company.com">
-                                                            <img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Mike McBride</a>
-                                                            <div class="email">
-                                                                mike@company.com
-                                                            </div>
-                                                        </div>
-                                                        <div class="user" title="email@company.com">
-                                                            <img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Marshall Hitt</a>
-                                                            <div class="email">
-                                                                marshall@company.com
-                                                            </div>
-                                                        </div>
-                                                        <div class="user" title="email@company.com">
-                                                            <img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Joe Cadena</a>
-                                                            <div class="email">
-                                                                joe@company.com
-                                                            </div>
-                                                        </div>
-                                                        <div class="user" title="email@company.com">
-                                                            <img src="img/avatars/male.png" alt="demo user"><a href="javascript:void(0);"> Mike McBride</a>
-                                                            <div class="email">
-                                                                mike@company.com
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="text-center">
-                                                            <ul class="pagination pagination-sm">
-                                                                <li class="disabled">
-                                                                    <a href="javascript:void(0);">Prev</a>
-                                                                </li>
-                                                                <li class="active">
-                                                                    <a href="javascript:void(0);">1</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:void(0);">2</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:void(0);">3</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:void(0);">...</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:void(0);">99</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:void(0);">Next</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-
-                                                    </div>
+                                                    
                                                     <!-- end tab -->
                                                 </div>
 
@@ -565,7 +438,7 @@
                             <div class="col-sm-12 col-md-12 col-lg-6">
 
                                 <div class="timeline-seperator text-center">
-                                    <span>10:30PM January 1st, 2013</span>
+                                    <span>Recent Posts</span>
        
                                 </div>
                                 <div id="a3"></div>
@@ -806,6 +679,7 @@
         }
 
         var id = $('#userID').val();
+        console.log(id);
         $.ajax({
             type: "POST",
             url: "http://localhost:5000/post?q=" + id,
