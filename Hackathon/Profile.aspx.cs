@@ -13,13 +13,7 @@ namespace Hackathon
         //public static string phone { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
-            var phone = Request.QueryString["phone"];
-            testt.Text = phone;
-            userPhone.Value = phone;
-            
-            
+                        
         }
         
         
