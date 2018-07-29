@@ -41,12 +41,16 @@ body {
     osx-font-smoothing: grayscale !important;
     font-smooth: always !important;
 }
+<<<<<<< HEAD
 .btn-score {
     background: #53B554;
     position: absolute;
     color: white;
     font-size: 15px;
 }
+=======
+
+>>>>>>> 56d8d98783e507026598c430c426a0ddbe63f4eb
 a {
     color: #365899;
     cursor: pointer;
@@ -7679,10 +7683,13 @@ section.mention-box {
             width: 45px;
             z-index: 999;
         }
+<<<<<<< HEAD
         section.mention-box .counter {
             float: left;
             
         }
+=======
+>>>>>>> 56d8d98783e507026598c430c426a0ddbe63f4eb
 
 
 .mention_vis .mention-title-box a, .mention_vis .description p {
@@ -7772,6 +7779,7 @@ section.mention-box .author .mention-source {
     right: 15px;
     top: 20px;
 }
+<<<<<<< HEAD
 section.mention-box .author .btn-score {
     background: #53B554;
     position:absolute;
@@ -7784,6 +7792,9 @@ section.mention-box .author .influence-score {
     right: 15px;
     top: 20px;
 }
+=======
+
+>>>>>>> 56d8d98783e507026598c430c426a0ddbe63f4eb
 section.mention-box .mention-source a {
     font-size: 12px;
     font-weight: normal !important;

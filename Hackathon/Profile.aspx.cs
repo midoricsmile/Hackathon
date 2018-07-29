@@ -13,7 +13,14 @@ namespace Hackathon
         //public static string phone { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+<<<<<<< HEAD
                         
+=======
+
+            
+            
+            
+>>>>>>> 56d8d98783e507026598c430c426a0ddbe63f4eb
         }
         
         
