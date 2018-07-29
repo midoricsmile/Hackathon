@@ -22,12 +22,12 @@ namespace Hackathon {
         protected global::System.Web.UI.HtmlControls.HtmlInputText top_name;
         
         /// <summary>
-        /// login_button control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button login_button;
+        protected global::System.Web.UI.WebControls.Button Button1;
     }
 }

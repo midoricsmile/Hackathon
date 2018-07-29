@@ -62,10 +62,35 @@
             var email = data['hits']['hits'][0]['_source']['email'] == null ? "null" : data['hits']['hits'][0]['_source']['email'];
             var hometown = data['hits']['hits'][0]['_source']['hometown'] == null ? "null" : data['hits']['hits'][0]['_source']['hometown'];
             var birthYear = data['hits']['hits'][0]['_source']['birthYear'] == null ? "null" : data['hits']['hits'][0]['_source']['birthYear'];
-            var quotes = data['hits']['hits'][0]['_source']['fb_data']['quotes'] == null ? "null" : data['hits']['hits'][0]['_source']['fb_data']['quotes'];
+            var quotes = data['hits']['hits'][0]['_source']['fb_data']['quotes'] == null ? "Không xác định" : data['hits']['hits'][0]['_source']['fb_data']['quotes'];
+            var phone = data['hits']['hits'][0]['_source']['fb_data']['mobile_phone'];
+            var marrigeSt = data['hits']['hits'][0]['_source']['marrigeStatus'];
+            if (marrigeSt == 0)
+                $("#userMarrige").text("Single");
+            else
+                $("#userMarrige").text("Married");
+            var schoolHtml = "";
+
+            if (data['hits']['hits'][0]['_source']['fb_data'].hasOwnProperty('education')) {
+                var school = data['hits']['hits'][0]['_source']['fb_data']['education']
+                for (var i = 0; i < school.length; i++) {
+                    schoolHtml += "<div><i class='fa fa-graduation-cap'></i><a href=https://www.facebook.com/" + school[i]['school']['id'] + "><span style='padding-left:10px;'>" + school[i]['school']['name'] + "</span></a></div>"
+                }
+            }
+            $('#userSchool').prepend(schoolHtml);
+            if (data['hits']['hits'][0]['_source']['fb_data'].hasOwnProperty('work')) {
+                var work = data['hits']['hits'][0]['_source']['fb_data']['work'];
+                var workHtml = "";
+                for (var i = 0; i < work.length; i++) {
+                    if (work[i].hasOwnProperty('position'))
+                        workHtml += "<div><i class='fa fa-briefcase'></i><a href=https://www.facebook.com/" + work[i]['position']['id'] + "><span style='padding-left:10px;'>" + work[i]['position']['name'] + "</span></a> at <a href=https://www.facebook.com/" + work[i]['employer']['id'] + "><span style='padding-left:10px;'>" + work[i]['employer']['name'] + "</span></a></div>"
+                }
+            }
+            $('#userWork').prepend(workHtml);
+            $('#fbUser').attr("href", "https://www.facebook.com/" + id);
             $('#userID').val(id);
             $('#userFollow').text(follow);
-            $('#phone').text($("#userPhone").val());
+            $('#phone').text(phone);
             $('#userName').text(name);
             $('#userConnect').text(connect);
             $('#userEmail').text(email);
@@ -83,15 +108,20 @@
                     getProfileFr(JSON.parse(data));
                 }
             });
-            
+
         };
         function getProfileFr(data) {
             datafr = data['friends'];
             console.log(datafr.length);
+            var counter = 0;
+            var counter_if = 0;
             for (var i = 0; i < datafr.length; i++) {
                 var influnce = datafr[i]['_source']['influence_score'];
-                if (influnce > 6) color = 'score';
-                else color = 'danger';
+                counter_if += influnce;
+                if (influnce >= 7) counter += 1;
+                if (influnce > 6)  color = 'score';
+                else if (influnce > 4) color = 'warning';
+                else color = 'danger'
                 console.log(color);
                 console.log(influnce);
                 itemHtml = "";
@@ -99,7 +129,7 @@
                 itemHtml += "	<div class='header'>"
 
                 itemHtml += "		<div class='avatar'>"
-                itemHtml += "			<a target='_blank' href='http://facebook.com/" + datafr[i]['_id'] + "'><img src='http://graph.facebook.com/" +  datafr[i]['_id'] + "/picture'></a>"
+                itemHtml += "			<a target='_blank' href='http://facebook.com/" + datafr[i]['_id'] + "'><img src='http://graph.facebook.com/" + datafr[i]['_id'] + "/picture'></a>"
                 itemHtml += "		</div>"
 
                 itemHtml += "	    <div class='author'>"
@@ -107,18 +137,18 @@
                 itemHtml += "			    <a target='_blank' href='http://facebook.com/" + datafr[i]['_id'] + "'>" + datafr[i]['_source']["author_name"] + "</a>"
                 itemHtml += "		    </div>"
                 itemHtml += "           <div class='influence-score'>"
-                itemHtml += "               <button onClick='window.location=\"/Profile.aspx?phone=" + datafr[i]['_id']  +"\";'  class='btn btn-lg btn-circle btn-" + color + "'>" + influnce + "</button> "
+                itemHtml += "               <button onClick='window.location=\"http://facebook.com/" + datafr[i]['_id'] +   "\";' class='btn btn-lg btn-circle btn-" + color + "'>" + influnce + "</button> "
                 itemHtml += "           </div>"
                 itemHtml += "       </div>"
 
                 itemHtml += "	    <div class='counter'>"
-                itemHtml += "            <span> <strong>" + datafr[i]['_source']['friend_count'] + "</strong>  Friends </span>"              
+                itemHtml += "            <span> <strong>" + datafr[i]['_source']['friend_count'] + "</strong>  Friends </span>"
                 itemHtml += "            <span> <strong>" + datafr[i]['_source']['follower_count'] + "</strong>  Followers </span>"
-                itemHtml += "       </div>"      
+                itemHtml += "       </div>"
 
                 itemHtml += "	</div>"
                 itemHtml += "   <div class='description'>";
-                if (datafr[i]['_source'].hasOwnProperty('fb_data')){
+                if (datafr[i]['_source'].hasOwnProperty('fb_data')) {
                     if (datafr[i]['_source']['fb_data'].hasOwnProperty('work')) {
                         var works = datafr[i]['_source']['fb_data']['work']
                         for (var j = 0; j < works.length; j++) {
@@ -129,9 +159,9 @@
                                 position = works[j]['position']['name'];
 
                             if (position)
-                                itemHtml += "<p>" + position + ' tại ' + "<a href='http://facebook.com/" + employerid + "'>" + employer + "</a></p>";
+                                itemHtml += "<p> <i class='fa fa-briefcase' style='padding-right:10px'></i>" + position + ' tại ' + "<a href='http://facebook.com/" + employerid + "'>" + employer + "</a></p>";
                             else
-                                itemHtml += "<p> Làm việc tại <a href='http://facebook.com/" + employerid + "'>" + employer + "</a></p>";
+                                itemHtml += "<p> <i class='fa fa-briefcase' style='padding-right:10px'></i> Làm việc tại <a href='http://facebook.com/" + employerid + "'>" + employer + "</a></p>";
 
                         }
                     }
@@ -139,10 +169,17 @@
                 itemHtml += "   </div"
                 $('#a1').prepend(itemHtml);
             }
-                    
+            itemFR = "Sô lượng bạn có điểm Influence cao : <b style='font-weight:700 !important'>" + counter + "</b>" ;
+            console.log(itemFR);
+            $("#fr_count").prepend(itemFR);
+            itemIF = '<button class="btn btn-xl btn-circle btn-score" style="margin-left:60px">' + parseInt(counter_if/datafr.length) + '</button>'
+            $("#user_influence").prepend(itemIF);
         };
             
-        
+        function showAllContent(ele) {
+            $(ele).hide();
+            $(ele).parent().next().show();
+        }
         
     </script>
     <script>        
@@ -244,7 +281,7 @@
                     <!--logo area-->
                     <div class="col-md-2 col-sm-2 col-xs-4">
                         <div class="logo">
-                            <a href="https://vaytinchap.vpbank.com.vn/LOSWebDE/?utm_source=vpbank.com.vn&amp;utm_medium=referral&amp;utm_campaign=UPL.Generic&amp;utm_content=productpage#vay-tin-chap">
+                            <a href="Default.aspx">
                                 <img src="./Vay tín chấp tiêu dùng VPBank - NH Việt Nam Thịnh Vượng_files/logo.png" alt="Vay tín chấp tiêu dùng VPBank">
                             </a>
                         </div>
@@ -255,11 +292,8 @@
                     <div class="col-md-10 col-sm-10 col-xs-8 ">
                         <div class="menu">
                             <ul class="navid ">
-                                <li class="current"><a href="https://vaytinchap.vpbank.com.vn/LOSWebDE/?utm_source=vpbank.com.vn&amp;utm_medium=referral&amp;utm_campaign=UPL.Generic&amp;utm_content=productpage#vay-tin-chap">Vay nhanh</a></li>
 
-                                <li class="vay-ngay"><a href="https://vaytinchap.vpbank.com.vn/LOSWebDE/?utm_source=vpbank.com.vn&amp;utm_medium=referral&amp;utm_campaign=UPL.Generic&amp;utm_content=productpage#vay-ngay">
-                                    <img src="./Vay tín chấp tiêu dùng VPBank - NH Việt Nam Thịnh Vượng_files/vpbank-logo-white.png"></a></li>
-
+                                <li class="vay-ngay"><img src="smartadmin/img/vpbank.png" height="inherit"/>"</li>
                             </ul>
                         </div>
                     </div>
@@ -335,8 +369,6 @@
                                 <div class="well well-light well-sm no-margin no-padding">
 
                                     <div class="row">
-
-
                                         <div class="col-sm-12">
 
                                             <div class="row">
@@ -350,55 +382,85 @@
                                                         <br>
                                                         <h4 class="font-md"><strong><span id="userConnect"></span></strong>
                                                             <br>
-                                                            <small>Connections</small></h4>
+                                                            <small>Friends</small></h4>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <h1><span class="semi-bold"><span id="userName"></span></span>
+                                                    <span>
+                                                        <h1><span class="semi-bold"><a id="fbUser"><span id="userName"></span></a></span>
+                                                            <br>
+                                                        </h1>
+                                                        <ul class="list-unstyled">
+                                                            <li>
+                                                                <p class="text-muted">
+                                                                    <i class="fa fa-phone"></i>&nbsp;&nbsp;(<span class="txt-color-darken">+84</span>) <span class="txt-color-darken"><span id="phone"></span></span>
+                                                                </p>
+                                                            </li>
+                                                            <li>
+                                                                <p class="text-muted">
+                                                                    <i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href=""><span id="userEmail"></span></a>
+                                                                </p>
+                                                            </li>
+                                                            <li>
+                                                                <p class="text-muted">
+                                                                    <i class="fa fa-home"></i>&nbsp;&nbsp;<span class="txt-color-darken"><span id="userHomeTown"></span></span>
+                                                                </p>
+                                                            </li>
+                                                            <li>
+                                                                <p class="text-muted">
+                                                                    <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span class="txt-color-darken"><span id="userBirthDay"></span></span>
+                                                                </p>
+                                                            </li>
+                                                        </ul>
                                                         <br>
-                                                    </h1>
-                                                    <ul class="list-unstyled">
-                                                        <li>
-                                                            <p class="text-muted">
-                                                                <i class="fa fa-phone"></i>&nbsp;&nbsp;(<span class="txt-color-darken">+84</span>) <span class="txt-color-darken"><span id="phone"></span></span>
-                                                            </p>
-                                                        </li>
-                                                        <li>
-                                                            <p class="text-muted">
-                                                                <i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href=""><span id="userEmail"></span></a>
-                                                            </p>
-                                                        </li>
-                                                        <li>
-                                                            <p class="text-muted">
-                                                                <i class="fa fa-home"></i>&nbsp;&nbsp;<span class="txt-color-darken"><span id="userHomeTown"></span></span>
-                                                            </p>
-                                                        </li>
-                                                        <li>
-                                                            <p class="text-muted">
-                                                                <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span class="txt-color-darken"><span id="userBirthDay"></span></span>
-                                                            </p>
-                                                        </li>
-                                                    </ul>
-                                                    <br>
-                                                    <p class="font-md">
-                                                        <i>Quotes</i>
-                                                    </p>
-                                                    <p>
-                                                        <span id="userQuotes"></span>
+                                                        <p class="font-md">
+                                                            <i>Quotes</i>
+                                                        </p>
+                                                        <p>
+                                                            <span id="userQuotes"></span>
 
-                                                    </p>
-                                                    <br>
-                                                    <a href="javascript:void(0);" class="btn btn-default btn-xs"><i class="fa fa-envelope-o"></i>Send Message</a>
-                                                    <br>
-                                                    <br>
+                                                        </p>
+                                                        
+                                                        <a onclick='showAllContent(this);' class="btn btn-default btn-xs">See More</a>
+                                                        
+                                                    </span>
+                                                    <span style="display:none">
+                                                        <br>
+                                                        <p class="font-md">
+                                                            <i>Education</i>
+                                                        </p>
+                                                        <p>
+                                                            <span id="userSchool"></span>
+
+                                                        </p>
+                                                        <br>
+                                                        <p class="font-md">
+                                                            <i>Work</i>
+                                                        </p>
+                                                        <p>
+                                                            <span id="userWork"></span>
+
+                                                        </p>
+                                                        <br>
+                                                        <p class="font-md">
+                                                            <i>Marrige Status</i>
+                                                        </p>
+                                                        <p>
+                                                            <span class="fa fa-heart"></span><span id="userMarrige" style="padding-left:10px"></span>
+
+                                                        </p>
+                                                        <br>
+                                                    </span>
                                                 </div>
-                                         
-                                            </div>
+                                                <div class="col-sm-3" id="user_influence">
+                                                    
+                                                    
+                                                </div>
 
                                         </div>
 
                                     </div>
-
+                                        </div>
                                     <div class="row">
 
                                         <div class="col-sm-12">
@@ -411,17 +473,17 @@
                                                     <li class="active">
                                                         <a href="#a1" data-toggle="tab">Influence Score</a>
                                                     </li>
-            
+
                                                     <li class="pull-left">
                                                         <span class="margin-top-10 display-inline"><i class="fa fa-rss text-success"></i>Top Friends</span>
+                                                        <div id="fr_count"></div>   
                                                     </li>
                                                 </ul>
 
                                                 <div class="tab-content padding-top-10">
                                                     <div class="tab-pane fade in active" id="a1">
-
                                                     </div>
-                                                    
+
                                                     <!-- end tab -->
                                                 </div>
 
@@ -437,9 +499,9 @@
                             </div>
                             <div class="col-sm-12 col-md-12 col-lg-6">
 
-                                <div class="timeline-seperator text-center">
+                                <div class="timeline-seperator text-center" style="padding-bottom: 10px;margin: 0;color: red;">
                                     <span>Recent Posts</span>
-       
+
                                 </div>
                                 <div id="a3"></div>
 

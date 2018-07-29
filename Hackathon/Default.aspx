@@ -3,7 +3,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <!DOCTYPE html>
     <html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface no-generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="" style="">
-    <head >
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -111,7 +111,7 @@
                     <!--logo area-->
                     <div class="col-md-2 col-sm-2 col-xs-4">
                         <div class="logo">
-                            <a href="https://vaytinchap.vpbank.com.vn/LOSWebDE/?utm_source=vpbank.com.vn&amp;utm_medium=referral&amp;utm_campaign=UPL.Generic&amp;utm_content=productpage#vay-tin-chap">
+                            <a href="Default.aspx">
                                 <img src="./Vay tín chấp tiêu dùng VPBank - NH Việt Nam Thịnh Vượng_files/logo.png" alt="Vay tín chấp tiêu dùng VPBank">
                                 <h1>Vay tín chấp tiêu dùng VPBank
                                 </h1>
@@ -121,14 +121,12 @@
                     </div>
                     <!--end logo area-->
                     <!--nav area-->
-                    <div class="col-md-10 col-sm-10 col-xs-8">
+                    <div class="col-md-10 col-sm-10 col-xs-8 ">
                         <div class="menu">
-                            <ul class="navid">
-                                <li class=""><a href="https://vaytinchap.vpbank.com.vn/LOSWebDE/?utm_source=vpbank.com.vn&amp;utm_medium=referral&amp;utm_campaign=UPL.Generic&amp;utm_content=productpage#vay-tin-chap">Vay nhanh</a></li>
+                            <ul class="navid ">
 
-                                <li class="vay-ngay current"><a href="https://vaytinchap.vpbank.com.vn/LOSWebDE/?utm_source=vpbank.com.vn&amp;utm_medium=referral&amp;utm_campaign=UPL.Generic&amp;utm_content=productpage#vay-ngay">
-                                    <img src="./Vay tín chấp tiêu dùng VPBank - NH Việt Nam Thịnh Vượng_files/vpbank-logo-white.png"></a></li>
-
+                                <li class="vay-ngay">
+                                    <img src="smartadmin/img/vpbank.png" />"</li>
                             </ul>
                         </div>
                     </div>
@@ -138,82 +136,41 @@
                 </div>
             </div>
         </div>
-        <!--end header  area -->
-        <!-- HOME SLIDER -->
-        <div class="vay-kinh-doanh">
-            <div class="home-banner vay-nhanh-dong-ho" id="vay-tin-chap">
-                <div class="slider-progress"></div>
-                <div class="container">
-                    <div class="row body_content">
-                        <div class="col-md-7 col-md-offset-5 ">
-                            <div class="hero intro1">
-
-                                <h2>Trust Score</h2>
-
-                                <div class="top-form">
-                                    <div class="row">
-                                        <div class="col-md-6 col">
-                                            <div class="inputt input_change">
-                                                <span class="message_icon">
-                                                    <img src="./Vay tín chấp tiêu dùng VPBank - NH Việt Nam Thịnh Vượng_files/icon_name.png"></span>
-                                                <input type="text" runat="server" required="" placeholder="Số điện thoại" ID="top_name" class="form-control name" name="name">
-                                            </div>
-                                        </div>
 
 
-
-                                        <div class="col-md-12 col text-center">
-                                            <div class="sunmite_button">
-                                                    <asp:Button runat="server" OnClick="GoTo"  ToolTip="Kiểm tra thông tin" title="Login" value="Login" ID="login_button" Text="Nhận khoản vay ngay" />
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="vay-nhanh intro2">
-                                    <img src="./Vay tín chấp tiêu dùng VPBank - NH Việt Nam Thịnh Vượng_files/vay-nhanh.png"></div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- HOME SLIDER -->
-        <!-- about  area -->
-
-        <!-- end about  area -->
-
-
-        <!-- client  area -->
-
-
-        <!-- end client  area -->
         <div id="vay-ngay" class="footer_area ">
             <div class="container">
                 <div class="row">
                     <!--section title-->
                     <div class="col-md-12">
                         <div class="section_title service_color">
-                            <h2 class="title title2">Đăng ký nhận khoản vay</h2>
-                            <div id="content_rq"></div>
+                            <h2 class="title title2">Tìm kiếm thông tin</h2>
                             <!--span class="title-border"></span-->
                             <div class="title-border-img">
-                                <img src="./Vay tín chấp tiêu dùng VPBank - NH Việt Nam Thịnh Vượng_files/title-border-white.png"></div>
+                                <img src="smartadmin/img/title-border-white.png" />
+                            </div>
                         </div>
                     </div>
                     <!--end section title-->
                 </div>
+                <div class="top-form">
+                    <div class="row">
+                        <div class="col-md-12 col">
+                            <div class="inputt input_change" style="vertical-align:middle;display:inline-block">
+                                <span class="message_icon">
+                                    <img style="padding:12px;" src="./Vay tín chấp tiêu dùng VPBank - NH Việt Nam Thịnh Vượng_files/icon_name.png"></span>
+                                <input type="text" runat="server" required="" placeholder="Số điện thoại" id="top_name" class="form-control name" name="name">
+                            </div>
+                            <div class="col-md-12 col text-center">
+                                <div class="sunmite_button">
+                                    <asp:Button runat="server" OnClick="GoTo" CssClass="btn btn-primary" ToolTip="Kiểm tra thông tin" title="Login" value="Login" ID="Button1" Text="Kiếm tra thông tin" />
 
-                <div class="row">
-                    <div class="footer-text">
-                        <b>Ngân hàng Việt Nam Thịnh vượng VPBank © 2017.</b><br>
-                        Trụ sở chính: 89 Láng Hạ, Đống Đa, Hà Nội. Điện thoại: 043.9288869. Fax: 043.9288867. Email:
-                customercare@vpbank.com.vn
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
-            </div>
+                <//div>
         </div>
 
 
@@ -292,7 +249,8 @@
                     <iframe src="./Vay tín chấp tiêu dùng VPBank - NH Việt Nam Thịnh Vượng_files/anchor.html" width="256" height="60" role="presentation" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe>
                 </div>
                 <div class="grecaptcha-error"></div>
-                <textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div>
+                <textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
+            </div>
         </div>
         </div>
 
@@ -403,7 +361,8 @@
                 }
 
                 .message_icon {
-                    padding: 15px;
+                    padding: 30px;
+                    
                 }
 
                     .message_icon img {
@@ -415,40 +374,39 @@
                 }
             </style>
             <script type="text/javascript">
-                function userPhone(){
-                             var phoneNumber = $('#top-name').val();
-                             document.getElementById("content_rq").innerHTML = "whatever";
-                             var url = "Profile.aspx/GetData";
+                function userPhone() {
+                    var phoneNumber = $('#top-name').val();
+                    document.getElementById("content_rq").innerHTML = "whatever";
+                    var url = "Profile.aspx/GetData";
 
 
-                             $.ajax({
-                                 type: "POST",
-                                 url: url,
-                                 dataType: "json",
-                                 data: "userPhone="+phoneNumber, //"userPhone="+phoneNumber{'userPhone': phoneNumber}
-                                 cache: false,
-                                 crossDomain: true,
-                                 contenType: "application/json; charset=utf-8",
-                                 success: function (response) {
-                                     
-                                 },
-                                 error: function () {
-                                     $(this).html("Error!");
-                                 },
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        dataType: "json",
+                        data: "userPhone=" + phoneNumber, //"userPhone="+phoneNumber{'userPhone': phoneNumber}
+                        cache: false,
+                        crossDomain: true,
+                        contenType: "application/json; charset=utf-8",
+                        success: function (response) {
 
-                             });
-                         }
-                         function test2() {
-                             var id = $('#top-name').val();
-                             document.getElementById("content_rq").innerHTML = "whatever";
-                             var url = "http://192.168.1.228:8888/api.aspx?t=network&q=" + id;
-                             $.getJSON(url,
-                                 function (data) {
-                                     alert(data);
-                                 });
-                         }
+                        },
+                        error: function () {
+                            $(this).html("Error!");
+                        },
+
+                    });
+                }
+                function test2() {
+                    var id = $('#top-name').val();
+                    document.getElementById("content_rq").innerHTML = "whatever";
+                    var url = "http://192.168.1.228:8888/api.aspx?t=network&q=" + id;
+                    $.getJSON(url,
+                        function (data) {
+                            alert(data);
+                        });
+                }
             </script>
-            
     </body>
 
     </html>

@@ -416,6 +416,7 @@
     <Content Include="smartadmin\img\versions\reactversion.png" />
     <Content Include="smartadmin\img\violate.jpg" />
     <Content Include="smartadmin\img\voicecommand\active-btn.gif" />
+    <Content Include="smartadmin\img\vpbank.png" />
     <Content Include="smartadmin\img\vt-menu.png" />
     <Content Include="smartadmin\js\app.config.js" />
     <Content Include="smartadmin\js\app.min.js" />
